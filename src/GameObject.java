@@ -1,15 +1,18 @@
 public abstract class GameObject{
 	protected String name;
-	protected int x, y;
+	protected int x, y; // top-left of the obj
 	protected int z; // for render order (ps: -1 wont be rendered)
 	protected String tag;
+	protected int length, width;
 
-	public GameObject(String _name, int _x, int _y, int _z, String _tag)
+	public GameObject(String _name, int _x, int _y, int _z, int _length, int _width, String _tag)
 	{
 		name = _name;
 		x = _x;
 		y = _y;
 		z = _z;
+		length = _length;
+		width = _width;
 		tag = _tag;
 	}
 	public abstract void tick();

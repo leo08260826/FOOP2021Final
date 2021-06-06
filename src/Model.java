@@ -17,8 +17,8 @@ public class Model{
 	public void init()
 	{
 		// test
-		PlayerTest player1 = new PlayerTest("player1", 50, 50, 1, "p");
-		PlayerTest player2 = new PlayerTest("player2", 100, 50, 0, "p");
+		PlayerTest player1 = new PlayerTest("player1", 50, 50, 10, 10, 1, "p");
+		PlayerTest player2 = new PlayerTest("player2", 100, 50, 10, 10, 0, "p");
 		handler.addObj(player1);
 		handler.addObj(player2);
 	}

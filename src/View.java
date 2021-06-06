@@ -5,7 +5,7 @@ public class View extends JFrame{
 	private Handler handler;
 
 	private int screenWidth;
-	private int screenHeight;	
+	private int screenHeight;
 	
 	public View(int width, int height, String title, Handler _handler)
 	{
