@@ -16,9 +16,9 @@ public class Model{
 
 	public void init()
 	{
-		// //test
-		PlayerTest player1 = new PlayerTest(50, 50, 1, "p");
-		PlayerTest player2 = new PlayerTest(100, 50, 0, "p");
+		// test
+		PlayerTest player1 = new PlayerTest("player1", 50, 50, 1, "p");
+		PlayerTest player2 = new PlayerTest("player2", 100, 50, 0, "p");
 		handler.addObj(player1);
 		handler.addObj(player2);
 	}
@@ -39,7 +39,7 @@ public class Model{
 			lastTime = now;
 			while(delta>=1)
 			{
-				tick(now-lastTime);
+				tick();
 				delta--;
 			}
 			if(running) render();
@@ -54,9 +54,9 @@ public class Model{
 		running = false;
 	}
 
-	private void tick(long deltaTime)
+	private void tick()
 	{
-		handler.tick(deltaTime);
+		handler.tick();
 	}
 	private void render()
 	{

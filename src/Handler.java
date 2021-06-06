@@ -2,11 +2,11 @@ import java.util.*;
 public class Handler{
 	public List<GameObject> objs = new ArrayList<GameObject>();
 
-	public void tick(long deltaTime)
+	public void tick()
 	{
 		for(int i=0; i<objs.size(); i++)
 		{
-			objs.get(i).tick(deltaTime);
+			objs.get(i).tick();
 		}
 	}
 

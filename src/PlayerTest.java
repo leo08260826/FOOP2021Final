@@ -1,14 +1,13 @@
-
 // test
 public class PlayerTest extends GameObject{
 
-	public PlayerTest(int _x, int _y, int _z, String _tag)
+	public PlayerTest(String _name, int _x, int _y, int _z, String _tag)
 	{
-		super(_x, _y, _z, _tag);
+		super(_name, _x, _y, _z, _tag);
 	}
 
 	@Override
-	public void tick(long deltaTime)
+	public void tick()
 	{
 		x+=1;
 	}
