@@ -3,7 +3,7 @@ import java.awt.event.*;
 
 public class Controller extends KeyAdapter{
 	private Model model;
-
+	public int key;
 	public Controller(Model _model)
 	{
 		model = _model;
@@ -17,7 +17,7 @@ public class Controller extends KeyAdapter{
     
     @Override
     public void keyPressed(KeyEvent e) {
-    	int key = e.getKeyCode();
+    	key = e.getKeyCode();
     	// test
     	if(key==KeyEvent.VK_W)
     	{
