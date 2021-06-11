@@ -7,6 +7,14 @@ public class Handler{
 	public List<GameObject> walls = new ArrayList<GameObject>();
 	public List<GameObject> grounds = new ArrayList<GameObject>();
 
+	private int currentStage;
+	private int theSameZ;
+
+	public Handler() {
+		currentStage = 0;
+		theSameZ = 10;
+	}
+
 	public void tick()
 	{
 		balls.forEach(o -> o.tick());
@@ -78,5 +86,21 @@ public class Handler{
 	}
 	public boolean lose() {
 		return balls.size() == 0;
+	}
+
+	public void arrange() {
+		balls.clear();
+		bricks.clear();
+		boards.clear();
+		// walls and grounds remain the same.
+
+		boards.add(new Board("board", 290, 430, theSameZ, 10, 60, ""));
+		balls.add(new Ball("ball", 315, 420, theSameZ, 10, 10, ""));
+		List<Position> positions = BrickArranger.arrange(currentStage);
+		positions.forEach((pos) -> {
+			bricks.add(new Brick("brick", pos.x, pos.y, theSameZ, 20, 30, ""));
+		});
+
+		tick();
 	}
 }
