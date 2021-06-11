@@ -31,4 +31,8 @@ public abstract class GameObject{
 
 	public void setTag(String s){tag=s;}
 	public String getTag(){return tag;}
+
+	public int getLength(){return length;}
+
+	public int getWidth(){return width;}
 }

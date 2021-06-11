@@ -48,6 +48,31 @@ public class Model{
 			catch(InterruptedException e){}
 		}
 	}
+	public void collideDetection(GameObject object1, GameObject object2){
+		//object1 = ball
+		if(((object1.getX() >= object2.getX()) && (object1.getX() <= object2.getX() + object2.getWidth()))
+			&& ((object1.getY() >= object2.getY()) && (object1.getY() <= object2.getY() + object2.getLength()))){
+			//Top-left corner of the ball is collided with object2
+			//object1.collide();
+			//object2.collided();
+		}else if(((object1.getX() + object1.getWidth() >= object2.getX()) && (object1.getX() + object1.getWidth() <= object2.getX() + object2.getWidth()))
+		&& ((object1.getY() >= object2.getY()) && (object1.getY() <= object2.getY() + object2.getLength()))){
+			//Top-right corner of the ball is collided with object2
+			//object1.collide();
+			//object2.collided();
+		}else if(((object1.getX() >= object2.getX()) && (object1.getX() <= object2.getX() + object2.getWidth()))
+		&& ((object1.getY() + object1.getLength() >= object2.getY()) && (object1.getY() + object1.getLength() <= object2.getY() + object2.getLength()))){
+			//Bottom-left corner of the ball is collided with object2
+			//object1.collide();
+			//object2.collided();
+		}
+		else if(((object1.getX() + object1.getWidth() >= object2.getX()) && (object1.getX() + object1.getWidth() <= object2.getX() + object2.getWidth()))
+		&& ((object1.getY() + object1.getLength() >= object2.getY()) && (object1.getY() + object1.getLength() <= object2.getY() + object2.getLength()))){
+			//Bottom-right corner of the ball is collided with object2
+			//object1.collide();
+			//object2.collided();
+		}
+	}
 
 	public void stopLoop()
 	{
