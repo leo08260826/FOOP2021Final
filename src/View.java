@@ -30,13 +30,39 @@ public class View extends JFrame{
 
 		// draw gameObject
 		g.setColor(Color.black);
-		for(int i=0; i<handler.objs.size(); i++)
-		{
-			GameObject tmpObj = handler.objs.get(i);
-			if(tmpObj.getZ()<0) continue;
 
-			// test
-			g.drawOval(tmpObj.getX(), tmpObj.getY(), 10, 10);
+		for(int i=0; i<handler.boards.size(); i++)
+		{
+			GameObject tmpObj = handler.boards.get(i);
+			if(tmpObj.getZ()<0) continue;
+			g.fillRect(tmpObj.getX(),tmpObj.getY(),tmpObj.getWidth(),tmpObj.getHeight());
+		}
+		for(int i=0; i<handler.walls.size(); i++)
+		{
+			GameObject tmpObj = handler.walls.get(i);
+			if(tmpObj.getZ()<0) continue;
+			g.fillRect(tmpObj.getX(),tmpObj.getY(),tmpObj.getWidth(),tmpObj.getHeight());
+		}
+		g.setColor(Color.red);
+		for(int i=0; i<handler.grounds.size(); i++)
+		{
+			GameObject tmpObj = handler.grounds.get(i);
+			if(tmpObj.getZ()<0) continue;
+			g.fillRect(tmpObj.getX(),tmpObj.getY(),tmpObj.getWidth(),tmpObj.getHeight());
+		}
+		for(int i=0; i<handler.balls.size(); i++)
+		{
+			GameObject tmpObj = handler.balls.get(i);
+			if(tmpObj.getZ()<0) continue;
+			g.fillRect(tmpObj.getX(),tmpObj.getY(),tmpObj.getWidth(),tmpObj.getHeight());
+		}
+
+		g.setColor(Color.blue);
+		for(int i=0; i<handler.bricks.size(); i++)
+		{
+			GameObject tmpObj = handler.bricks.get(i);
+			if(tmpObj.getZ()<0) continue;
+			g.fillRect(tmpObj.getX(),tmpObj.getY(),tmpObj.getWidth(),tmpObj.getHeight());
 		}
 
 		// draw UI

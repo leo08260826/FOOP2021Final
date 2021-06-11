@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class BrickArranger {
     public static List<Position> arrange(int stage) {
         List<Position> positions = new ArrayList<>();
-        File stageFile = new File("./stages/" + stage + ".txt");
+        File stageFile = new File("./src/stages/" + stage + ".txt");
         Scanner in;
 
         try {

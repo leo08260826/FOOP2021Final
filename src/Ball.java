@@ -3,9 +3,11 @@ public class Ball extends GameObject implements Collider{
     private int vx;
     private int vy;
     
-    public Ball(String _name, int _x, int _y, int _z, int _length, int _width, String _tag)
+    public Ball(String _name, int _x, int _y, int _z, int _width, int _height, String _tag, int _vx, int _vy)
 	{
-		super(_name, _x, _y, _z, _length, _width, _tag);
+		super(_name, _x, _y, _z, _width, _height, _tag);
+		vx = _vx;
+		vy = _vy;
 	}
 
 	@Override

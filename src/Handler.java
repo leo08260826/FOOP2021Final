@@ -88,19 +88,20 @@ public class Handler{
 		return balls.size() == 0;
 	}
 
-	public void arrange() {
+	public Board arrange() {
 		balls.clear();
 		bricks.clear();
 		boards.clear();
 		// walls and grounds remain the same.
 
-		boards.add(new Board("board", 290, 430, theSameZ, 10, 60, ""));
-		balls.add(new Ball("ball", 315, 420, theSameZ, 10, 10, ""));
+		Board board = new Board("board", 290, 430, theSameZ, 60, 10, "");
+		boards.add(board);
+		balls.add(new Ball("ball", 315, 420, theSameZ, 10, 10, "", 0, -1));
 		List<Position> positions = BrickArranger.arrange(currentStage);
 		positions.forEach((pos) -> {
-			bricks.add(new Brick("brick", pos.x, pos.y, theSameZ, 20, 30, ""));
+			bricks.add(new Brick("brick", pos.x, pos.y, theSameZ, 30, 20, ""));
 		});
 
-		tick();
+		return board;
 	}
 }

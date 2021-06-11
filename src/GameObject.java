@@ -3,16 +3,16 @@ public abstract class GameObject{
 	protected int x, y; // top-left of the obj
 	protected int z; // for render order (ps: -1 wont be rendered)
 	protected String tag;
-	protected int length, width;
+	protected int width, height;
 
-	public GameObject(String _name, int _x, int _y, int _z, int _length, int _width, String _tag)
+	public GameObject(String _name, int _x, int _y, int _z, int _width, int _height, String _tag)
 	{
 		name = _name;
 		x = _x;
 		y = _y;
 		z = _z;
-		length = _length;
 		width = _width;
+		height = _height;
 		tag = _tag;
 	}
 	public abstract void tick();
@@ -32,7 +32,6 @@ public abstract class GameObject{
 	public void setTag(String s){tag=s;}
 	public String getTag(){return tag;}
 
-	public int getLength(){return length;}
-
 	public int getWidth(){return width;}
+	public int getHeight(){return height;}
 }

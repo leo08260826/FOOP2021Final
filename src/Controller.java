@@ -3,7 +3,7 @@ import java.awt.event.*;
 
 public class Controller extends KeyAdapter{
 	private Model model;
-	public int key;
+
 	public Controller(Model _model)
 	{
 		model = _model;
@@ -11,25 +11,32 @@ public class Controller extends KeyAdapter{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// test
-        System.out.println("keyTyped");
     }
     
     @Override
     public void keyPressed(KeyEvent e) {
-    	key = e.getKeyCode();
-    	// test
-    	if(key==KeyEvent.VK_W)
+    	int key = e.getKeyCode();
+    	if(key==KeyEvent.VK_A)
     	{
-    		System.out.println("keyPressed W");
+    		model.boardMove(-1, true);
     	}
-        
+    	else if(key==KeyEvent.VK_D)
+    	{
+    		model.boardMove(1, true);
+    	}
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-    	// test
-        System.out.println("keyReleased");
+    	int key = e.getKeyCode();
+    	if(key==KeyEvent.VK_A)
+    	{
+    		model.boardMove(-1, false);
+    	}
+    	else if(key==KeyEvent.VK_D)
+    	{
+    		model.boardMove(1, false);
+    	}
     }
 
 }
