@@ -4,6 +4,7 @@ public abstract class GameObject{
 	protected int z; // for render order (ps: -1 wont be rendered)
 	protected String tag;
 	protected int width, height;
+	protected Boolean isDead;
 
 	public GameObject(String _name, int _x, int _y, int _z, int _width, int _height, String _tag)
 	{
@@ -14,6 +15,7 @@ public abstract class GameObject{
 		width = _width;
 		height = _height;
 		tag = _tag;
+		isDead = false;
 	}
 	public abstract void tick();
 
@@ -34,4 +36,6 @@ public abstract class GameObject{
 
 	public int getWidth(){return width;}
 	public int getHeight(){return height;}
+
+	public Boolean getIsDead(){return isDead;}
 }

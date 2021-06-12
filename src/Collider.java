@@ -1,3 +1,3 @@
 public interface Collider {
-    public abstract void collide();
+    public abstract void collide(GameObject other, int collisionType);
 }

@@ -17,7 +17,7 @@ public class Ball extends GameObject implements Collider{
         y+=vy;
 	}
     
-    public void collide(){
+    public void collide(GameObject other, int collisionType){
 
     }
 }

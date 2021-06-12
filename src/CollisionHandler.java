@@ -38,6 +38,7 @@ public class CollisionHandler{
 		{
 			//Top-left corner of the ball is collided with object2
 			((Collidable)object2).collided(object1, 0);
+			((Collider)object1).collide(object2, 0);
 			return true;
 		}
 		else if(((object1.getX() + object1.getWidth() >= object2.getX()) && (object1.getX() + object1.getWidth() <= object2.getX() + object2.getWidth()))
@@ -45,6 +46,7 @@ public class CollisionHandler{
 		{
 			//Top-right corner of the ball is collided with object2
 			((Collidable)object2).collided(object1, 1);
+			((Collider)object1).collide(object2, 1);
 			return true;
 		}
 		else if(((object1.getX() >= object2.getX()) && (object1.getX() <= object2.getX() + object2.getWidth()))
@@ -52,6 +54,7 @@ public class CollisionHandler{
 		{
 			//Bottom-left corner of the ball is collided with object2
 			((Collidable)object2).collided(object1, 2);
+			((Collider)object1).collide(object2, 2);
 			return true;
 		}
 		else if(((object1.getX() + object1.getWidth() >= object2.getX()) && (object1.getX() + object1.getWidth() <= object2.getX() + object2.getWidth()))
@@ -59,6 +62,7 @@ public class CollisionHandler{
 		{
 			//Bottom-right corner of the ball is collided with object2
 			((Collidable)object2).collided(object1, 3);
+			((Collider)object1).collide(object2, 3);
 			return true;
 		}
 		return false;
