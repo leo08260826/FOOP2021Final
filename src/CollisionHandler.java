@@ -6,47 +6,61 @@ public class CollisionHandler{
 		handler = _handler;
 	}
 
-	public void detectCollison()
+	public Boolean detectCollison()
 	{
+		Boolean res = false;
 		for(int i=0; i<handler.balls.size(); i++)
 		{
 			for(int j=0; j<handler.boards.size(); j++)
 			{
-				collideDetection(handler.balls.get(i), handler.boards.get(j));
+				if(collideDetection(handler.balls.get(i), handler.boards.get(j)))
+					res = true;
 			}
 			for(int j=0; j<handler.bricks.size(); j++)
 			{
-				collideDetection(handler.balls.get(i), handler.bricks.get(j));
+				if(collideDetection(handler.balls.get(i), handler.bricks.get(j)))
+					res = true;
 			}
 			for(int j=0; j<handler.walls.size(); j++)
 			{
-				collideDetection(handler.balls.get(i), handler.walls.get(j));
+				if(collideDetection(handler.balls.get(i), handler.walls.get(j)))
+					res = true;
 			}
 		}
+		return res;
 	}
 
-	private void collideDetection(GameObject object1, GameObject object2){
+	private Boolean collideDetection(GameObject object1, GameObject object2){
 		//object1 = ball
 
 		if(((object1.getX() >= object2.getX()) && (object1.getX() <= object2.getX() + object2.getWidth()))
-			&& ((object1.getY() >= object2.getY()) && (object1.getY() <= object2.getY() + object2.getHeight()))){
+			&& ((object1.getY() >= object2.getY()) && (object1.getY() <= object2.getY() + object2.getHeight())))
+		{
 			//Top-left corner of the ball is collided with object2
 			((Collidable)object2).collided(object1, 0);
+			return true;
 		}
 		else if(((object1.getX() + object1.getWidth() >= object2.getX()) && (object1.getX() + object1.getWidth() <= object2.getX() + object2.getWidth()))
-		&& ((object1.getY() >= object2.getY()) && (object1.getY() <= object2.getY() + object2.getHeight()))){
+		&& ((object1.getY() >= object2.getY()) && (object1.getY() <= object2.getY() + object2.getHeight())))
+		{
 			//Top-right corner of the ball is collided with object2
 			((Collidable)object2).collided(object1, 1);
+			return true;
 		}
 		else if(((object1.getX() >= object2.getX()) && (object1.getX() <= object2.getX() + object2.getWidth()))
-		&& ((object1.getY() + object1.getHeight() >= object2.getY()) && (object1.getY() + object1.getHeight() <= object2.getY() + object2.getHeight()))){
+		&& ((object1.getY() + object1.getHeight() >= object2.getY()) && (object1.getY() + object1.getHeight() <= object2.getY() + object2.getHeight())))
+		{
 			//Bottom-left corner of the ball is collided with object2
 			((Collidable)object2).collided(object1, 2);
+			return true;
 		}
 		else if(((object1.getX() + object1.getWidth() >= object2.getX()) && (object1.getX() + object1.getWidth() <= object2.getX() + object2.getWidth()))
-		&& ((object1.getY() + object1.getHeight() >= object2.getY()) && (object1.getY() + object1.getHeight() <= object2.getY() + object2.getHeight()))){
+		&& ((object1.getY() + object1.getHeight() >= object2.getY()) && (object1.getY() + object1.getHeight() <= object2.getY() + object2.getHeight())))
+		{
 			//Bottom-right corner of the ball is collided with object2
 			((Collidable)object2).collided(object1, 3);
+			return true;
 		}
+		return false;
 	}	
 }

@@ -69,7 +69,10 @@ public class Model{
 	private void tick()
 	{
 		handler.tick();
-		collisionHandler.detectCollison();
+		if(collisionHandler.detectCollison())
+		{
+			//TODO: check game state
+		}
 	}
 	private void render()
 	{
