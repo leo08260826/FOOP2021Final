@@ -27,8 +27,9 @@ public class Board extends GameObject implements Collidable {
 		if(!aIsPressed && dIsPressed) x += boardSpeed;
 	}
 
-    public void collided(){
-        return;
+    public void collided(GameObject other, int collisionType)
+    {
+    	System.out.println("touch board");
     }
 
 }

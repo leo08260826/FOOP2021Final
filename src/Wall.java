@@ -11,7 +11,8 @@ public class Wall extends GameObject implements Collidable {
 		return;
 	}
 
-    public void collided(){
-        return;
+    public void collided(GameObject other, int collisionType)
+    {
+    	System.out.println("touch wall");
     }
 }

@@ -2,6 +2,7 @@ import java.util.concurrent.TimeUnit;
 public class Model{
 	private View view;
 	private Handler handler;
+	private CollisionHandler collisionHandler;
 
 	private Boolean running = false;
 	private int refreshRate;
@@ -15,6 +16,7 @@ public class Model{
 		handler = _handler;
 		refreshRate = (int)(1/(double)fps*1000);
 		System.out.println("refreshRate: " + refreshRate);
+		collisionHandler = new CollisionHandler(_handler);
 	}
 
 	public void init()
@@ -58,31 +60,6 @@ public class Model{
 			catch(InterruptedException e){}
 		}
 	}
-	// public void collideDetection(GameObject object1, GameObject object2){
-	// 	//object1 = ball
-	// 	if(((object1.getX() >= object2.getX()) && (object1.getX() <= object2.getX() + object2.getWidth()))
-	// 		&& ((object1.getY() >= object2.getY()) && (object1.getY() <= object2.getY() + object2.getLength()))){
-	// 		//Top-left corner of the ball is collided with object2
-	// 		//object1.collide();
-	// 		//object2.collided();
-	// 	}else if(((object1.getX() + object1.getWidth() >= object2.getX()) && (object1.getX() + object1.getWidth() <= object2.getX() + object2.getWidth()))
-	// 	&& ((object1.getY() >= object2.getY()) && (object1.getY() <= object2.getY() + object2.getLength()))){
-	// 		//Top-right corner of the ball is collided with object2
-	// 		//object1.collide();
-	// 		//object2.collided();
-	// 	}else if(((object1.getX() >= object2.getX()) && (object1.getX() <= object2.getX() + object2.getWidth()))
-	// 	&& ((object1.getY() + object1.getLength() >= object2.getY()) && (object1.getY() + object1.getLength() <= object2.getY() + object2.getLength()))){
-	// 		//Bottom-left corner of the ball is collided with object2
-	// 		//object1.collide();
-	// 		//object2.collided();
-	// 	}
-	// 	else if(((object1.getX() + object1.getWidth() >= object2.getX()) && (object1.getX() + object1.getWidth() <= object2.getX() + object2.getWidth()))
-	// 	&& ((object1.getY() + object1.getLength() >= object2.getY()) && (object1.getY() + object1.getLength() <= object2.getY() + object2.getLength()))){
-	// 		//Bottom-right corner of the ball is collided with object2
-	// 		//object1.collide();
-	// 		//object2.collided();
-	// 	}
-	// }
 
 	public void stopLoop()
 	{
@@ -92,6 +69,7 @@ public class Model{
 	private void tick()
 	{
 		handler.tick();
+		collisionHandler.detectCollison();
 	}
 	private void render()
 	{

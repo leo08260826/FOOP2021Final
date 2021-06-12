@@ -11,8 +11,8 @@ public class Brick extends GameObject implements Collidable {
 		return;
 	}
 
-    public void collided(){
-        //TODO: change tag? remove?
-        return;
+    public void collided(GameObject other, int collisionType)
+    {
+    	System.out.println("touch brick");
     }
 }

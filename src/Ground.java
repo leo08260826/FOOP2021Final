@@ -1,4 +1,4 @@
-public class Ground extends GameObject{
+public class Ground extends GameObject {
 
 	public Ground(String _name, int _x, int _y, int _z, int _width, int _height, String _tag)
 	{
