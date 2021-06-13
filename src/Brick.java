@@ -1,4 +1,4 @@
-public class Brick extends GameObject implements Collidable, HasImageObject {
+public abstract class Brick extends GameObject implements Collidable, HasImageObject {
 	public Brick(String _name, int _x, int _y, int _z, int _width, int _height, String _tag)
 	{
 		super(_name, _x, _y, _z, _width, _height, _tag);
@@ -13,7 +13,5 @@ public class Brick extends GameObject implements Collidable, HasImageObject {
     {
     	System.out.println("touch brick");
     }
-	public String imagePath(){
-        return "./src/images/PNG/11-Breakout-Tiles.png";
-    }
+	abstract public String imagePath();
 }
