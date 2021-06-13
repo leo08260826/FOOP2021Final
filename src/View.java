@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class View extends JFrame{
 	private Handler handler;
@@ -7,6 +8,8 @@ public class View extends JFrame{
 	private int screenWidth;
 	private int screenHeight;
 	
+	private Toolkit toolkit =Toolkit.getDefaultToolkit();  
+
 	public View(int width, int height, String title, Handler _handler)
 	{
 		super(title);
@@ -56,13 +59,15 @@ public class View extends JFrame{
 			if(tmpObj.getZ()<0) continue;
 			g.fillRect(tmpObj.getX(),tmpObj.getY(),tmpObj.getWidth(),tmpObj.getHeight());
 		}
-
-		g.setColor(Color.blue);
+		
+		// g.setColor(Color.blue);
+		
 		for(int i=0; i<handler.bricks.size(); i++)
 		{
 			GameObject tmpObj = handler.bricks.get(i);
 			if(tmpObj.getZ()<0) continue;
-			g.fillRect(tmpObj.getX(),tmpObj.getY(),tmpObj.getWidth(),tmpObj.getHeight());
+			Image a =toolkit.getImage( ((Brick)tmpObj).imagePath() );  
+			g.drawImage(a, tmpObj.getX(),tmpObj.getY(), tmpObj.getWidth(),tmpObj.getHeight(),this);
 		}
 
 		// draw UI

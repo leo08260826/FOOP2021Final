@@ -18,6 +18,12 @@ public class Ball extends GameObject implements Collider{
 	}
     
     public void collide(GameObject other, int collisionType){
-
+		vy = -vy;
     }
+
+	public int getVx(){return vx;}
+	public int getVy(){return vy;}
+	public void setVx(int v){vx = v;}
+	public void setVy(int v){vy = v;}
+
 }

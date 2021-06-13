@@ -1,12 +1,11 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class BrickArranger {
-    public static List<Position> arrange(int stage) {
-        List<Position> positions = new ArrayList<>();
+    
+    public static void arrange(int stage, List<GameObject> bricks, int theSameZ) {
         File stageFile = new File("./src/stages/" + stage + ".txt");
         Scanner in;
 
@@ -14,17 +13,29 @@ public class BrickArranger {
             in = new Scanner(stageFile);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            return positions;
+            return ;
         }
 
         String[] line;
         while (in.hasNextLine()) {
             line = in.nextLine().trim().split(" ");
             String brickType = line[0];     // currently unused
-            positions.add(new Position(line[1], line[2]));
+            if( brickType.equals("BasicBrick") ){
+                bricks.add(new BasicBrick("BasicBrick", Integer.parseInt(line[1]), Integer.parseInt(line[2]), theSameZ, 30, 20, ""));
+            }
+            else if( brickType.equals("BlockBrick") ){
+                bricks.add(new BlockBrick("BlockBrick", Integer.parseInt(line[1]), Integer.parseInt(line[2]), theSameZ, 30, 20, ""));
+            }
+            else if( brickType.equals("HardBrick") ){
+                bricks.add(new HardBrick("HardBrick", Integer.parseInt(line[1]), Integer.parseInt(line[2]), theSameZ, 30, 20, ""));
+            }
+            else if( brickType.equals("RandomBrick") ){
+                bricks.add(new RandomBrick("RandomBrick", Integer.parseInt(line[1]), Integer.parseInt(line[2]), theSameZ, 30, 20, ""));
+            }
+            
         }
 
-        return positions;
+        return ;
     }
 
 // for unit testing

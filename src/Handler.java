@@ -11,13 +11,19 @@ public class Handler{
 	private int theSameZ;
 
 	public Handler() {
-		currentStage = 0;
+		currentStage = 1;
 		theSameZ = 10;
 	}
 
 	public void tick()
 	{
 		balls.forEach(o -> o.tick());
+		Iterator<GameObject> iter = bricks.iterator();
+		while(iter.hasNext()){
+			if(iter.next().isDead){
+				iter.remove();
+			}
+		}
 		bricks.forEach(o -> o.tick());
 		boards.forEach(o -> o.tick());
 		walls.forEach(o -> o.tick());
@@ -51,6 +57,7 @@ public class Handler{
 			if(objs.get(i).equals(obj))
 			{
 				objs.remove(i);
+				System.out.println("Remove!");
 				return;
 			}
 		}
@@ -97,10 +104,7 @@ public class Handler{
 		Board board = new Board("board", 290, 430, theSameZ, 60, 10, "");
 		boards.add(board);
 		balls.add(new Ball("ball", 315, 420, theSameZ, 10, 10, "", 0, -1));
-		List<Position> positions = BrickArranger.arrange(currentStage);
-		positions.forEach((pos) -> {
-			bricks.add(new Brick("brick", pos.x, pos.y, theSameZ, 30, 20, ""));
-		});
+		BrickArranger.arrange(currentStage, bricks, theSameZ);
 
 		return board;
 	}
