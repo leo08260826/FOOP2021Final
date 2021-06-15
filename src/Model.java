@@ -1,4 +1,6 @@
 import java.util.concurrent.TimeUnit;
+import java.util.List;
+import java.util.ArrayList;
 public class Model{
 	private View view;
 	private Handler handler;
@@ -25,13 +27,13 @@ public class Model{
 		// PlayerTest player1 = new PlayerTest("player1", 50, 50, 10, 10, 1, "p");
 		// handler.addObj(player1);
 		board = handler.arrange();
-		Wall wall1 = new Wall("wallL", 50, 50, 10, 5, 400, "");
+		Wall wall1 = new Wall("wallL", 50, 50, 10, 5, 400, "", false);
 		handler.addObj(wall1);
-		Wall wall2 = new Wall("wallR", 620, 50, 10, 5, 400, "");
+		Wall wall2 = new Wall("wallR", 620, 50, 10, 5, 400, "", false);
 		handler.addObj(wall2);
-		Wall wall3 = new Wall("wallT", 50, 50, 10, 600, 5, "");
+		Wall wall3 = new Wall("wallT", 50, 50, 10, 600, 5, "", false);
 		handler.addObj(wall3);
-		Ground ground = new Ground("ground", 50, 470, 10, 600, 5, "");
+		Ground ground = new Ground("ground", 50, 470, 10, 600, 5, "", false);
 		handler.addObj(ground);
 	}
 
@@ -72,6 +74,20 @@ public class Model{
 		if(collisionHandler.detectCollison())
 		{
 			//TODO: check game state
+			List<GameObject> newballs = new ArrayList<GameObject>();
+			for(int i = 0; i < handler.balls.size(); i++){
+				if(!handler.balls.get(i).getIsDead()){
+					newballs.add(handler.balls.get(i));
+				}
+			}
+			handler.balls = newballs;
+			List<GameObject> newbricks = new ArrayList<GameObject>();
+			for(int i = 0; i < handler.bricks.size(); i++){
+				if(!handler.bricks.get(i).getIsDead()){
+					newbricks.add(handler.bricks.get(i));
+				}
+			}
+			handler.bricks = newbricks;
 		}
 	}
 	private void render()
