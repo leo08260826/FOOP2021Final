@@ -119,4 +119,9 @@ public class Handler{
 
 		return board;
 	}
+	public Board arrange(int currentStage) {
+		// TODO: combine this and above after external calls are determined.
+		this.currentStage = currentStage;
+		return arrange();
+	}
 }
