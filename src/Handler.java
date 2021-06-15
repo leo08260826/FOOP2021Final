@@ -71,6 +71,7 @@ public class Handler{
 		System.out.println("Didn't remove anything!");
 	}
 
+	// TODO: check whether this is needed
 	public void removeObj(GameObject obj) {
 		if (obj instanceof Ball) {
 			removeObjHelper(obj, balls);
@@ -109,12 +110,12 @@ public class Handler{
 		boards.clear();
 		// walls and grounds remain the same.
 
-		Board board = new Board("board", 290, 430, theSameZ, 60, 10, "");
+		Board board = new Board("board", 305, 430, theSameZ, 60, 10, "");
 		boards.add(board);
-		balls.add(new Ball("ball", 315, 420, theSameZ, 10, 10, "", 0, -1));
+		balls.add(new Ball("ball", 328, 420, theSameZ, 10, 10, "", 0, -1));
 		List<Position> positions = BrickArranger.arrange(currentStage);
 		positions.forEach((pos) -> {
-			bricks.add(new Brick("brick", pos.x, pos.y, theSameZ, 30, 20, ""));
+			bricks.add(new Brick("brick", pos.x, pos.y, theSameZ, 50, 20, ""));
 		});
 
 		return board;
