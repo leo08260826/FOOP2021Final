@@ -97,8 +97,13 @@ public class Handler{
 	}
 
 	public boolean win() {
-		// TODO: need to change logic due to new brick type HardBrick
-		return bricks.size() == 0;
+		// DONE: change logic due to new brick type BlockBrick
+		for (GameObject brick: bricks) {
+			if (!(brick instanceof BlockBrick)) {
+				return false;
+			}
+		}
+		return true;
 	}
 	public boolean lose() {
 		return balls.size() == 0;
