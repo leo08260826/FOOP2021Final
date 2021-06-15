@@ -1,4 +1,4 @@
-public class Ground extends GameObject {
+public class Ground extends GameObject implements Collidable{
 
 	public Ground(String _name, int _x, int _y, int _z, int _width, int _height, String _tag)
 	{
@@ -9,5 +9,10 @@ public class Ground extends GameObject {
 	public void tick()
 	{
 		return;
+	}
+
+	public void collided(GameObject other)
+	{
+		System.out.println("touch ground");
 	}
 }
