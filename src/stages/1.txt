@@ -1,0 +1,31 @@
+BasicBrick 310 70
+
+BasicBrick 250 100
+BasicBrick 310 100
+BasicBrick 370 100
+
+BasicBrick 190 130
+BasicBrick 250 130
+BasicBrick 310 130
+BasicBrick 370 130
+BasicBrick 430 130
+
+BasicBrick 130 160
+BasicBrick 190 160
+BasicBrick 250 160
+BasicBrick 310 160
+BasicBrick 370 160
+BasicBrick 430 160
+BasicBrick 490 160
+
+BasicBrick 190 190
+BasicBrick 250 190
+BasicBrick 310 190
+BasicBrick 370 190
+BasicBrick 430 190
+
+BasicBrick 250 220
+BasicBrick 310 220
+BasicBrick 370 220
+
+BasicBrick 310 250
