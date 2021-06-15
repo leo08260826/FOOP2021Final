@@ -15,13 +15,27 @@ public class Handler{
 		theSameZ = 10;
 	}
 
-	public void tick()
-	{
-		balls.forEach(o -> o.tick());
-		bricks.forEach(o -> o.tick());
-		boards.forEach(o -> o.tick());
-		walls.forEach(o -> o.tick());
-		grounds.forEach(o -> o.tick());
+
+	private void tickAndCheckForRemove(List<GameObject> list) {
+		Stack<Integer> indicesToBeDeleted = new Stack<>();
+		for (int i = 0; i < list.size(); i++) {
+			GameObject o = list.get(i);
+			o.tick();
+			if (o.getIsDead()) {
+				indicesToBeDeleted.push(i);
+			}
+		}
+		while (!indicesToBeDeleted.empty()) {
+			list.remove(indicesToBeDeleted.pop());
+		}
+	}
+
+	public void tick() {
+		tickAndCheckForRemove(balls);
+		tickAndCheckForRemove(bricks);
+		tickAndCheckForRemove(boards);
+		tickAndCheckForRemove(walls);
+		tickAndCheckForRemove(grounds);
 	}
 
 	private void addObjHelper(GameObject obj, List<GameObject> objs) {
@@ -82,6 +96,7 @@ public class Handler{
 	}
 
 	public boolean win() {
+		// TODO: need to change logic due to new brick type HardBrick
 		return bricks.size() == 0;
 	}
 	public boolean lose() {
