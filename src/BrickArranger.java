@@ -20,6 +20,7 @@ public class BrickArranger {
         String[] line;
         while (in.hasNextLine()) {
             line = in.nextLine().trim().split(" ");
+            if (line.length == 1 && line[0].equals("")) continue;
             String brickType = line[0];     // currently unused
             positions.add(new Position(line[1], line[2]));
         }
