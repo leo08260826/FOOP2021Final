@@ -109,7 +109,9 @@ public class Handler{
 		return balls.size() == 0;
 	}
 
-	public Board arrange() {
+	public Board arrange(int currentStage) {
+		this.currentStage = currentStage;
+
 		balls.clear();
 		bricks.clear();
 		boards.clear();
@@ -118,16 +120,8 @@ public class Handler{
 		Board board = new Board("board", 305, 430, theSameZ, 60, 10, "");
 		boards.add(board);
 		balls.add(new Ball("ball", 328, 420, theSameZ, 10, 10, "", 0, -1));
-		List<Position> positions = BrickArranger.arrange(currentStage);
-		positions.forEach((pos) -> {
-			bricks.add(new Brick("brick", pos.x, pos.y, theSameZ, 50, 20, ""));
-		});
+		BrickArranger.arrange(currentStage, bricks, theSameZ);
 
 		return board;
-	}
-	public Board arrange(int currentStage) {
-		// TODO: combine this and above after external calls are determined.
-		this.currentStage = currentStage;
-		return arrange();
 	}
 }

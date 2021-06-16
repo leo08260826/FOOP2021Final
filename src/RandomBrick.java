@@ -7,10 +7,12 @@ public class RandomBrick extends Brick  {
     private int getRandom(){
         return ((int)(Math.random()*2*randomRange)+1)-randomRange;
     }
-    public void collided(GameObject other, int collisionType)
+
+    @Override
+    public void collided(GameObject other)
     {
     	System.out.println("touch RandomBrick");
-        isDead = true;
+        this.setIsDead(true);
         if(other instanceof Ball){
             // [0,6] and -3 = [-3,3]
             ((Ball)other).setVx(getRandom());

@@ -5,9 +5,9 @@ public class Ball extends GameObject implements Collider{
     private int vy;
 	private boolean isdead;
     
-    public Ball(String _name, int _x, int _y, int _z, int _width, int _height, String _tag, int _vx, int _vy, boolean _isdead)
+    public Ball(String _name, int _x, int _y, int _z, int _width, int _height, String _tag, int _vx, int _vy)
 	{
-		super(_name, _x, _y, _z, _width, _height, _tag, _isdead);
+		super(_name, _x, _y, _z, _width, _height, _tag);
 		vx = _vx;
 		vy = _vy;
 		isdead = false;

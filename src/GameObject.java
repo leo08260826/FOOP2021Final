@@ -6,7 +6,7 @@ public abstract class GameObject{
 	protected int width, height;
 	protected boolean isdead;
 
-	public GameObject(String _name, int _x, int _y, int _z, int _width, int _height, String _tag, Boolean _isdead)
+	public GameObject(String _name, int _x, int _y, int _z, int _width, int _height, String _tag)
 	{
 		name = _name;
 		x = _x;
@@ -15,7 +15,7 @@ public abstract class GameObject{
 		width = _width;
 		height = _height;
 		tag = _tag;
-		isdead = _isdead;
+		isdead = false;
 	}
 	public abstract void tick();
 

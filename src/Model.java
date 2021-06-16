@@ -23,17 +23,15 @@ public class Model{
 
 	public void init()
 	{
-		// test
-		// PlayerTest player1 = new PlayerTest("player1", 50, 50, 10, 10, 1, "p");
-		// handler.addObj(player1);
-		board = handler.arrange();
-		Wall wall1 = new Wall("wallL", 50, 50, 10, 5, 400, "", false);
+		board = handler.arrange(0);
+
+		Wall wall1 = new Wall("wallL", 50, 50, 10, 5, 400, "");
 		handler.addObj(wall1);
-		Wall wall2 = new Wall("wallR", 620, 50, 10, 5, 400, "", false);
+		Wall wall2 = new Wall("wallR", 620, 50, 10, 5, 400, "");
 		handler.addObj(wall2);
-		Wall wall3 = new Wall("wallT", 50, 50, 10, 600, 5, "", false);
+		Wall wall3 = new Wall("wallT", 50, 50, 10, 600, 5, "");
 		handler.addObj(wall3);
-		Ground ground = new Ground("ground", 50, 470, 10, 600, 5, "", false);
+		Ground ground = new Ground("ground", 50, 470, 10, 600, 5, "");
 		handler.addObj(ground);
 	}
 

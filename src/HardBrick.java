@@ -10,7 +10,7 @@ public class HardBrick extends Brick  {
         if(life > 1){
             life--;
         }else{
-            isDead = true;
+            this.setIsDead(true);
         }
     }
 

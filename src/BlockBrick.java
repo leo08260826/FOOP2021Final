@@ -4,7 +4,8 @@ public class BlockBrick extends Brick  {
         super(_name, _x, _y, _z, _width, _height, _tag);
     }
 
-    public void collided(GameObject other, int collisionType)
+    @Override
+    public void collided(GameObject other)
     {
     	System.out.println("touch BlockBrick");
     }
