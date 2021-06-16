@@ -19,6 +19,7 @@ public class BrickArranger {
         String[] line;
         while (in.hasNextLine()) {
             line = in.nextLine().trim().split(" ");
+            if (line.length == 1 && line[0].equals("")) continue;
             String brickType = line[0];     // currently unused
             if( brickType.equals("BasicBrick") ){
                 bricks.add(new BasicBrick("BasicBrick", Integer.parseInt(line[1]), Integer.parseInt(line[2]), theSameZ, 30, 20, ""));

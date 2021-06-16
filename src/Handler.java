@@ -15,19 +15,26 @@ public class Handler{
 		theSameZ = 10;
 	}
 
-	public void tick()
-	{
-		balls.forEach(o -> o.tick());
-		Iterator<GameObject> iter = bricks.iterator();
-		while(iter.hasNext()){
-			if(iter.next().isDead){
-				iter.remove();
+	private void tickAndCheckForRemove(List<GameObject> list) {
+		Stack<Integer> indicesToBeDeleted = new Stack<>();
+		for (int i = 0; i < list.size(); i++) {
+			GameObject o = list.get(i);
+			o.tick();
+			if (o.getIsDead()) {
+				indicesToBeDeleted.push(i);
 			}
 		}
-		bricks.forEach(o -> o.tick());
-		boards.forEach(o -> o.tick());
-		walls.forEach(o -> o.tick());
-		grounds.forEach(o -> o.tick());
+		while (!indicesToBeDeleted.empty()) {
+			list.remove(indicesToBeDeleted.pop());
+		}
+	}
+
+	public void tick() {
+		tickAndCheckForRemove(balls);
+		tickAndCheckForRemove(bricks);
+		tickAndCheckForRemove(boards);
+		tickAndCheckForRemove(walls);
+		tickAndCheckForRemove(grounds);
 	}
 
 	private void addObjHelper(GameObject obj, List<GameObject> objs) {
@@ -64,6 +71,7 @@ public class Handler{
 		System.out.println("Didn't remove anything!");
 	}
 
+	// TODO: check whether this is needed
 	public void removeObj(GameObject obj) {
 		if (obj instanceof Ball) {
 			removeObjHelper(obj, balls);
@@ -89,7 +97,13 @@ public class Handler{
 	}
 
 	public boolean win() {
-		return bricks.size() == 0;
+		// DONE: change logic due to new brick type BlockBrick
+		for (GameObject brick: bricks) {
+			if (!(brick instanceof BlockBrick)) {
+				return false;
+			}
+		}
+		return true;
 	}
 	public boolean lose() {
 		return balls.size() == 0;
@@ -101,14 +115,19 @@ public class Handler{
 		boards.clear();
 		// walls and grounds remain the same.
 
-		Board board = new Board("board", 290, 430, theSameZ, 60, 10, "", false);
+		Board board = new Board("board", 305, 430, theSameZ, 60, 10, "");
 		boards.add(board);
-		balls.add(new Ball("ball", 315, 420, theSameZ, 10, 10, "", 1, -1, false));
+		balls.add(new Ball("ball", 328, 420, theSameZ, 10, 10, "", 0, -1));
 		List<Position> positions = BrickArranger.arrange(currentStage);
 		positions.forEach((pos) -> {
-			bricks.add(new Brick("brick", pos.x, pos.y, theSameZ, 30, 20, "", false));
+			bricks.add(new Brick("brick", pos.x, pos.y, theSameZ, 50, 20, ""));
 		});
 
 		return board;
+	}
+	public Board arrange(int currentStage) {
+		// TODO: combine this and above after external calls are determined.
+		this.currentStage = currentStage;
+		return arrange();
 	}
 }

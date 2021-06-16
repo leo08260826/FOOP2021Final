@@ -1,30 +1,31 @@
-BasicBrick 0 50
-BlockBrick 60 50
-BasicBrick 120 50
-BasicBrick 180 50
-BasicBrick 240 50
-RandomBrick 300 50
-BasicBrick 360 50
-BasicBrick 420 50
-BasicBrick 480 50
-BasicBrick 540 50
-BasicBrick 0 80
-BasicBrick 60 80
-BasicBrick 120 80
-BasicBrick 180 80
-BasicBrick 240 80
-HardBrick 300 80
-BasicBrick 360 80
-BasicBrick 420 80
-BasicBrick 480 80
-BasicBrick 540 80
-BasicBrick 0 110
-BasicBrick 60 110
-BasicBrick 120 110
-BasicBrick 180 110
-BasicBrick 240 110
-BasicBrick 300 110
-BasicBrick 360 110
-BasicBrick 420 110
-BasicBrick 480 110
-BasicBrick 540 110
+BasicBrick 310 70
+
+BasicBrick 250 100
+BasicBrick 310 100
+BasicBrick 370 100
+
+BasicBrick 190 130
+BasicBrick 250 130
+BasicBrick 310 130
+BasicBrick 370 130
+BasicBrick 430 130
+
+BasicBrick 130 160
+BasicBrick 190 160
+BasicBrick 250 160
+BasicBrick 310 160
+BasicBrick 370 160
+BasicBrick 430 160
+BasicBrick 490 160
+
+BasicBrick 190 190
+BasicBrick 250 190
+BasicBrick 310 190
+BasicBrick 370 190
+BasicBrick 430 190
+
+BasicBrick 250 220
+BasicBrick 310 220
+BasicBrick 370 220
+
+BasicBrick 310 250

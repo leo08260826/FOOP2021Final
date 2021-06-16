@@ -24,3 +24,6 @@ __MACOSX/
 *.zip
 *.tar.gz
 *.rar
+
+
+/out

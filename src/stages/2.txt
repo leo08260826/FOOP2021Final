@@ -20,10 +20,15 @@ BasicBrick 550 100
 
 BasicBrick 70 130
 BasicBrick 130 130
-BasicBrick 190 130
-BasicBrick 250 130
-BasicBrick 310 130
-BasicBrick 370 130
-BasicBrick 430 130
 BasicBrick 490 130
 BasicBrick 550 130
+
+BasicBrick 70 160
+BasicBrick 130 160
+BasicBrick 490 160
+BasicBrick 550 160
+
+BlockBrick 70 190
+BlockBrick 130 190
+BlockBrick 490 190
+BlockBrick 550 190
