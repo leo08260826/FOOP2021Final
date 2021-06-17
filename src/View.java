@@ -1,27 +1,132 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import javax.swing.Timer;
+import java.util.concurrent.TimeUnit;
 
 public class View extends JFrame{
-	private Handler handler;
-
 	private int screenWidth;
 	private int screenHeight;
-	
-	private Toolkit toolkit =Toolkit.getDefaultToolkit();  
+	private JPanel mainPanel, selectionPanel, playPanel;  
 
-	public View(int width, int height, String title, Handler _handler)
+	public View(int width, int height, String title, Handler _handler, Game _game)
 	{
 		super(title);
 		screenWidth = width;
 		screenHeight = height;
-		handler = _handler;
+
+		init(_game, _handler);
+
 		setSize(width, height);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);
+	}
 
+	public void render()
+	{
+		((PlayPanel)playPanel).render();
+	}
+
+	public void renderMain()
+	{		
+		setContentPane(mainPanel);
 		setVisible(true);
+	}
+	public void renderStageSelection()
+	{
+	    setContentPane(selectionPanel);
+		setVisible(true);
+	}
+	public void renderPlay()
+	{
+		setContentPane(playPanel);
+		setVisible(true);
+	}
+
+	private void init(Game game, Handler handler)
+	{
+		// main panel
+		mainPanel = new JPanel();
+		JButton btn1 = new JButton("Start Game");
+    	btn1.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	game.stageSelection();
+	        }
+	    });
+	    mainPanel.add(btn1);
+	    JButton btn2 = new JButton("Exit");
+    	btn2.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	game.exit();
+	        }
+	    });
+	    mainPanel.add(btn2);
+
+	    // selection panel
+	    selectionPanel = new JPanel();
+
+		JButton btn3 = new JButton("Level 1");
+    	btn3.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	game.play(1);
+	        }
+	    });
+	    selectionPanel.add(btn3);
+	    JButton btn4 = new JButton("Level 2");
+    	btn4.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	game.play(2);
+	        }
+	    });
+	    selectionPanel.add(btn4);
+	    JButton btn5 = new JButton("Level 3");
+    	btn5.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	game.play(3);
+	        }
+	    });
+	    selectionPanel.add(btn5);
+	    JButton btn6 = new JButton("main");
+    	btn6.addActionListener(new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	        	game.main();
+	        }
+	    });
+	    selectionPanel.add(btn6);
+
+	    // player panel
+	    playPanel = new PlayPanel(handler,screenWidth,screenHeight); 
+	}
+}
+
+
+class PlayPanel extends JPanel
+{
+	private int screenWidth;
+	private int screenHeight;
+	private Handler handler;
+	private Toolkit toolkit =Toolkit.getDefaultToolkit();
+
+	public PlayPanel(Handler _handler, int width, int height)
+	{
+		handler = _handler;
+		screenWidth = width;
+		screenHeight = height;
+	}
+
+	public void render()
+	{
+		repaint();
 	}
 
 	@Override
@@ -33,7 +138,6 @@ public class View extends JFrame{
 
 		// draw gameObject
 		g.setColor(Color.black);
-
 		for(int i=0; i<handler.boards.size(); i++)
 		{
 			GameObject tmpObj = handler.boards.get(i);
@@ -59,9 +163,7 @@ public class View extends JFrame{
 			if(tmpObj.getZ()<0) continue;
 			g.fillRect(tmpObj.getX(),tmpObj.getY(),tmpObj.getWidth(),tmpObj.getHeight());
 		}
-		
-		// g.setColor(Color.blue);
-		
+
 		for(int i=0; i<handler.bricks.size(); i++)
 		{
 			GameObject tmpObj = handler.bricks.get(i);
@@ -73,9 +175,5 @@ public class View extends JFrame{
 		// draw UI
 		
 	}
-	public void render()
-	{
-		revalidate();
-		repaint();
-	}
+
 }
