@@ -8,6 +8,7 @@ public class Model{
 
 	private Boolean running = false;
 	private int refreshRate;
+	private int gameState; // 0:playing, 1:win, 2:lose
 
 	// GameObjs
 	private Board board;
@@ -19,23 +20,16 @@ public class Model{
 		refreshRate = (int)(1/(double)fps*1000);
 		System.out.println("refreshRate: " + refreshRate);
 		collisionHandler = new CollisionHandler(_handler);
+		gameState = 0;
 	}
 
-	public void init()
+	public void init(int stage)
 	{
-		board = handler.arrange(0);
-
-		Wall wall1 = new Wall("wallL", 50, 50, 10, 5, 400, "");
-		handler.addObj(wall1);
-		Wall wall2 = new Wall("wallR", 620, 50, 10, 5, 400, "");
-		handler.addObj(wall2);
-		Wall wall3 = new Wall("wallT", 50, 50, 10, 600, 5, "");
-		handler.addObj(wall3);
-		Ground ground = new Ground("ground", 50, 470, 10, 600, 5, "");
-		handler.addObj(ground);
+		handler.arrange(stage);
+		board = handler.newBall();
 	}
 
-	public void startLoop()
+	public void	 startLoop()
 	{
 		// game loop
 		// ref: https://www.youtube.com/watch?v=1gir2R7G9ws
@@ -59,6 +53,7 @@ public class Model{
 			try{TimeUnit.MILLISECONDS.sleep(refreshRate);}
 			catch(InterruptedException e){}
 		}
+		//TODO: win/lose animation by using gameState
 	}
 
 	public void stopLoop()
@@ -66,12 +61,16 @@ public class Model{
 		running = false;
 	}
 
+	private void render()
+	{
+		view.render();
+	}
+
 	private void tick()
 	{
 		handler.tick();
 		if(collisionHandler.detectCollison())
 		{
-			//TODO: check game state
 			List<GameObject> newballs = new ArrayList<GameObject>();
 			for(int i = 0; i < handler.balls.size(); i++){
 				if(!handler.balls.get(i).getIsDead()){
@@ -86,13 +85,26 @@ public class Model{
 				}
 			}
 			handler.bricks = newbricks;
+
+			// check game state
+			if(handler.win())
+			{
+				gameState=1;
+				stopLoop();
+			}
+			else if(handler.lose())
+			{
+				gameState=2;
+				stopLoop();		
+			}
+			else if(handler.noBall())
+			{
+				handler.setLife(handler.getLife()-1);
+				board = handler.newBall();
+			}
+
 		}
 	}
-	private void render()
-	{
-		view.render();
-	}
-
 	public void boardMove(int direction, boolean isPress)
 	{
 		board.move(direction, isPress);

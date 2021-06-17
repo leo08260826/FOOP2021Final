@@ -9,6 +9,7 @@ public class Handler{
 
 	private int currentStage;
 	private int theSameZ;
+	private int life;
 
 	public Handler() {
 		currentStage = 1;
@@ -105,23 +106,45 @@ public class Handler{
 		}
 		return true;
 	}
-	public boolean lose() {
+	public boolean noBall()
+	{
 		return balls.size() == 0;
 	}
+	public boolean lose() {
+		return balls.size() == 0 && life<=0;
+	}
 
-	public Board arrange(int currentStage) {
+	public void arrange(int currentStage) {
+		life = 2;
 		this.currentStage = currentStage;
 
 		balls.clear();
 		bricks.clear();
 		boards.clear();
-		// walls and grounds remain the same.
+		walls.clear();
+		grounds.clear();
 
+		Wall wall1 = new Wall("wallL", 50, 50, 10, 5, 400, "");
+		addObj(wall1);
+		Wall wall2 = new Wall("wallR", 620, 50, 10, 5, 400, "");
+		addObj(wall2);
+		Wall wall3 = new Wall("wallT", 50, 50, 10, 600, 5, "");
+		addObj(wall3);
+		Ground ground = new Ground("ground", 50, 470, 10, 600, 5, "");
+		addObj(ground);
+
+		BrickArranger.arrange(currentStage, bricks, theSameZ);
+	}
+	public Board newBall() {
+		boards.clear();
+		balls.clear();
 		Board board = new Board("board", 305, 430, theSameZ, 60, 10, "");
 		boards.add(board);
 		balls.add(new Ball("ball", 328, 420, theSameZ, 10, 10, "", 0, -1));
-		BrickArranger.arrange(currentStage, bricks, theSameZ);
 
 		return board;
 	}
+
+	public int getLife(){return life;}
+	public void setLife(int i){life=i;}
 }
