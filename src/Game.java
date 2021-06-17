@@ -34,7 +34,13 @@ public class Game {
 		view.renderPlay();
 		model.init(stage);
 		// model.startLoop();
-		new Thread(model::startLoop).start();
+		Thread loop = new Thread(model::startLoop);
+		loop.start();
+		// try {
+  //         loop.join();
+  //       } catch (InterruptedException e) {
+  //         e.printStackTrace();
+  //       }
 	}
 	public void exit()
 	{

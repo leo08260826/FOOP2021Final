@@ -133,7 +133,6 @@ public class Handler{
 		Ground ground = new Ground("ground", 50, 470, 10, 600, 5, "");
 		addObj(ground);
 
-
 		BrickArranger.arrange(currentStage, bricks, theSameZ);
 	}
 	public Board newBall() {
