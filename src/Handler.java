@@ -115,7 +115,7 @@ public class Handler{
 	}
 
 	public void arrange(int currentStage) {
-		life = 3;
+		life = 2;
 		this.currentStage = currentStage;
 
 		balls.clear();

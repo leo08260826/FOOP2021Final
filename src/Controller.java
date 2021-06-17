@@ -11,7 +11,6 @@ public class Controller extends KeyAdapter{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		System.out.println("type");
     }
     
     @Override

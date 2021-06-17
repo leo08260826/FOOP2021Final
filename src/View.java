@@ -25,6 +25,12 @@ public class View extends JFrame{
 		setResizable(false);
 		setLocationRelativeTo(null);
 	}
+	public void setKeyListener(Controller controller)
+	{
+		mainPanel.addKeyListener(controller);
+		playPanel.addKeyListener(controller);
+		selectionPanel.addKeyListener(controller);
+	}
 
 	public void render()
 	{
@@ -34,16 +40,19 @@ public class View extends JFrame{
 	public void renderMain()
 	{		
 		setContentPane(mainPanel);
+		mainPanel.requestFocus();
 		setVisible(true);
 	}
 	public void renderStageSelection()
 	{
 	    setContentPane(selectionPanel);
+	    selectionPanel.requestFocus();
 		setVisible(true);
 	}
 	public void renderPlay()
 	{
 		setContentPane(playPanel);
+		playPanel.requestFocus();
 		setVisible(true);
 	}
 
@@ -51,6 +60,7 @@ public class View extends JFrame{
 	{
 		// main panel
 		mainPanel = new JPanel();
+		mainPanel.setFocusable(true);
 		JButton btn1 = new JButton("Start Game");
     	btn1.addActionListener(new ActionListener() {
 	        @Override
@@ -70,6 +80,7 @@ public class View extends JFrame{
 
 	    // selection panel
 	    selectionPanel = new JPanel();
+	    selectionPanel.setFocusable(true);
 
 		JButton btn3 = new JButton("Level 1");
     	btn3.addActionListener(new ActionListener() {
@@ -106,6 +117,7 @@ public class View extends JFrame{
 
 	    // player panel
 	    playPanel = new PlayPanel(handler,screenWidth,screenHeight); 
+	    playPanel.setFocusable(true);
 	}
 }
 

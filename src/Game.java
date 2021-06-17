@@ -12,7 +12,8 @@ public class Game {
 		view = new View(width, height, title, handler, this);
 		model = new Model(view, handler, fps);
 		controller = new Controller(model);
-		view.addKeyListener(controller);
+		view.setKeyListener(controller);
+		// view.addKeyListener(controller);
 	}
 
 	public void main()
@@ -32,6 +33,7 @@ public class Game {
 		System.out.println("playing " + stage + " stage.");
 		view.renderPlay();
 		model.init(stage);
+		// model.startLoop();
 		new Thread(model::startLoop).start();
 	}
 	public void exit()
