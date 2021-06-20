@@ -7,7 +7,7 @@ public class BlockBrick extends Brick  {
     @Override
     public void collided(GameObject other)
     {
-    	System.out.println("touch BlockBrick");
+    	// System.out.println("touch BlockBrick");
     }
 
     public String imagePath(){

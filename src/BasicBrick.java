@@ -7,7 +7,7 @@ public class BasicBrick extends Brick  {
     @Override
     public void collided(GameObject other)
     {
-    	System.out.println("touch BasicBrick");
+    	// System.out.println("touch BasicBrick");
         this.setIsDead(true);
     }
 

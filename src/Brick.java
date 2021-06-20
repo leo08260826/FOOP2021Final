@@ -13,7 +13,7 @@ public abstract class Brick extends GameObject implements Collidable, HasImageOb
     public void collided(GameObject other)
     {
 		this.setIsDead(true);
-    	System.out.println("touch brick");
+    	// System.out.println("touch brick");
     }
 	abstract public String imagePath();
 }
