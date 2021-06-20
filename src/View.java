@@ -93,6 +93,7 @@ public class View extends JFrame {
 		selectionPanel = new MyJPanel(img, screenWidth, screenHeight);
 		// selectionPanel = new JPanel();
 		selectionPanel.setFocusable(true);
+		selectionPanel.setLayout(null);
 
 		JButton btn3 = new JButton("Level 1");
 		btn3.addActionListener(new ActionListener() {
@@ -101,6 +102,7 @@ public class View extends JFrame {
 				game.play(1);
 			}
 		});
+		setButtonLocation(btn3, screenWidth / 2 - 140, screenHeight / 2 - 50);
 		selectionPanel.add(btn3);
 		JButton btn4 = new JButton("Level 2");
 		btn4.addActionListener(new ActionListener() {
@@ -109,6 +111,7 @@ public class View extends JFrame {
 				game.play(2);
 			}
 		});
+		setButtonLocation(btn4, screenWidth / 2 - 40, screenHeight / 2 - 50);
 		selectionPanel.add(btn4);
 		JButton btn5 = new JButton("Level 3");
 		btn5.addActionListener(new ActionListener() {
@@ -117,6 +120,7 @@ public class View extends JFrame {
 				game.play(3);
 			}
 		});
+		setButtonLocation(btn5, screenWidth / 2 + 60, screenHeight / 2 - 50);
 		selectionPanel.add(btn5);
 		JButton btn6 = new JButton("main");
 		btn6.addActionListener(new ActionListener() {
@@ -125,6 +129,7 @@ public class View extends JFrame {
 				game.main();
 			}
 		});
+		setButtonLocation(btn6, screenWidth / 2 - 35, screenHeight / 2 - 100);
 		selectionPanel.add(btn6);
 
 		// player panel
