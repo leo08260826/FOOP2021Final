@@ -1,11 +1,14 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.Math;
 
 public class Board extends GameObject implements Collidable {
     
-    private static int boardSpeed = 1;
+    private static int boardSpeed = 3;
     private Boolean aIsPressed = false;
     private Boolean dIsPressed = false;
+	private int distance = 0;
+	private int direction = 1;
 
 	public Board(String _name, int _x, int _y, int _z, int _width, int _height, String _tag)
 	{
@@ -23,13 +26,22 @@ public class Board extends GameObject implements Collidable {
 	@Override
 	public void tick()
 	{
-		if(aIsPressed && !dIsPressed) x -= boardSpeed;
-		if(!aIsPressed && dIsPressed) x += boardSpeed;
+		if(aIsPressed && !dIsPressed){
+			direction = -1;
+			 x -= boardSpeed;
+		}
+		if(!aIsPressed && dIsPressed){
+			direction = 1;
+			x += boardSpeed;
+		}
 	}
 
     public void collided(GameObject other)
     {
+		distance = 2*other.getX() + other.getWidth() - 2*this.getX() - this.getWidth();
     	System.out.println("touch board");
     }
 
+	public int getDirection(){return Math.abs(direction);}
+	public int getDistance(){return distance;}
 }

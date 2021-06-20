@@ -138,10 +138,10 @@ public class Handler{
 	public Board newBall() {
 		boards.clear();
 		balls.clear();
-		Board board = new Board("board", 305, 430, theSameZ, 60, 10, "");
+		Board board = new Board("board", 305, 430, theSameZ, 160, 10, "");
 		boards.add(board);
-		balls.add(new Ball("ball", 328, 420, theSameZ, 10, 10, "", 0, -1));
-
+		int vx = (int)(Math.random()*4 - 2);
+		balls.add(new Ball("ball", 328, 420, theSameZ, 10, 10, "", vx, -3));
 		return board;
 	}
 
