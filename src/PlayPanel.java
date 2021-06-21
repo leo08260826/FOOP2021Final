@@ -17,7 +17,7 @@ class PlayPanel extends JPanel
 		
 		if(state==0)
 		{
-			resultImage = toolkit.getImage("./src/images/none.png");
+			resultImage = toolkit.getImage("./src/images/none.PNG");
 		}
 		else if(state==1)
 		{
@@ -25,7 +25,7 @@ class PlayPanel extends JPanel
 		}
 		else if(state==2)
 		{
-			resultImage = toolkit.getImage("./src/images/lose.jpg");
+			resultImage = toolkit.getImage("./src/images/lose.PNG");
 		}
 		
 	}
@@ -81,7 +81,7 @@ class PlayPanel extends JPanel
 		// draw UI
 
 		// draw End Game
-		g.drawImage(resultImage, 10, 10, 200, 100, this);
+		g.drawImage(resultImage, 320-150, 240-100, 300, 200, this);
 		
 	}
 
