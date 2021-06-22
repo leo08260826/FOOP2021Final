@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class BrickArranger {
     
     public static void arrange(int stage, List<GameObject> bricks, int theSameZ) {
-        File stageFile = new File("./src/stages/" + stage + ".txt");
+        File stageFile = new File("./src/stages/new/" + stage + ".txt");
         Scanner in;
 
         try {
@@ -23,17 +23,18 @@ public class BrickArranger {
             String brickType = line[0];
             int x = Integer.parseInt(line[1]);
             int y = Integer.parseInt(line[2]);
+            int brickWidth = 40;
             if( brickType.equals("BasicBrick") ){
-                bricks.add(new BasicBrick(brickType, x, y, theSameZ, 50, 20, ""));
+                bricks.add(new BasicBrick(brickType, x, y, theSameZ, brickWidth, 20, ""));
             }
             else if( brickType.equals("BlockBrick") ){
-                bricks.add(new BlockBrick(brickType, x, y, theSameZ, 50, 20, ""));
+                bricks.add(new BlockBrick(brickType, x, y, theSameZ, brickWidth, 20, ""));
             }
             else if( brickType.equals("HardBrick") ){
-                bricks.add(new HardBrick(brickType, x, y, theSameZ, 50, 20, ""));
+                bricks.add(new HardBrick(brickType, x, y, theSameZ, brickWidth, 20, ""));
             }
             else if( brickType.equals("RandomBrick") ){
-                bricks.add(new RandomBrick(brickType, x, y, theSameZ, 50, 20, ""));
+                bricks.add(new RandomBrick(brickType, x, y, theSameZ, brickWidth, 20, ""));
             }
             
         }

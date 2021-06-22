@@ -15,13 +15,17 @@ public class Handler{
 	public Handler() {
 		theSameZ = 10;
 
-		int leftWallX = 10;
+		// current playground:
+		//     left limit:  x = 10
+		//     right limit: x = 470	  (the center of the board/ball should be at x = 240)
+		//     top limit:   y = 10
+		int leftWallX = 5;
 		int rightWallX = 470;
 		int thickness = 5;
 
-		addObj(new Wall("wallL", leftWallX, 10, 10, thickness, 480, ""));
-		addObj(new Wall("wallR", rightWallX, 10, 10, thickness, 480, ""));
-		addObj(new Wall("wallT", 10, 10, 10, 460, thickness, ""));
+		addObj(new Wall("wallL", leftWallX, 5, 10, thickness, 480, ""));
+		addObj(new Wall("wallR", rightWallX, 5, 10, thickness, 480, ""));
+		addObj(new Wall("wallT", 10, 5, 10, 460, thickness, ""));
 		addObj(new Ground("ground", 10, 470, 10, 600, thickness, ""));
 
 		boardLeftLimit = leftWallX + thickness;
@@ -140,9 +144,9 @@ public class Handler{
 	public Board newBall() {
 		boards.clear();
 		balls.clear();
-		Board board = new Board("board", 305, 430, theSameZ, 60, 10, "", boardLeftLimit, boardRightLimit);
+		Board board = new Board("board", 210, 430, theSameZ, 60, 10, "", boardLeftLimit, boardRightLimit);
 		boards.add(board);
-		balls.add(new Ball("ball", 328, 420, theSameZ, 10, 10, "", 0, -1));
+		balls.add(new Ball("ball", 235, 420, theSameZ, 10, 10, "", 1, -1));
 
 		return board;
 	}
