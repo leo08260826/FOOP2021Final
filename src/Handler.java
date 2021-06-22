@@ -12,6 +12,11 @@ public class Handler{
 
 	public Handler() {
 		theSameZ = 10;
+
+		addObj(new Wall("wallL", 10, 10, 10, 5, 480, ""));
+		addObj(new Wall("wallR", 470, 10, 10, 5, 480, ""));
+		addObj(new Wall("wallT", 10, 10, 10, 460, 5, ""));
+		addObj(new Ground("ground", 10, 470, 10, 600, 5, ""));
 	}
 
 	private void tickAndCheckForRemove(List<GameObject> list) {
@@ -118,17 +123,8 @@ public class Handler{
 		balls.clear();
 		bricks.clear();
 		boards.clear();
-		walls.clear();
-		grounds.clear();
-
-		Wall wall1 = new Wall("wallL", 50, 50, 10, 5, 400, "");
-		addObj(wall1);
-		Wall wall2 = new Wall("wallR", 620, 50, 10, 5, 400, "");
-		addObj(wall2);
-		Wall wall3 = new Wall("wallT", 50, 50, 10, 600, 5, "");
-		addObj(wall3);
-		Ground ground = new Ground("ground", 50, 470, 10, 600, 5, "");
-		addObj(ground);
+		//walls.clear();
+		//grounds.clear();
 
 		BrickArranger.arrange(currentStage, bricks, theSameZ);
 	}
