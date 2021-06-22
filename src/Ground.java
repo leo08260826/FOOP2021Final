@@ -15,6 +15,6 @@ public class Ground extends GameObject implements Collidable{
 	{
 
 		other.setIsDead(true);
-		System.out.println("touch ground");
+		// System.out.println("touch ground");
 	}
 }

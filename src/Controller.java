@@ -24,6 +24,11 @@ public class Controller extends KeyAdapter{
     	{
     		model.boardMove(1, true);
     	}
+
+    	if(key==KeyEvent.VK_ESCAPE)
+		{
+			model.stopLoop();
+		}
     }
 
     @Override

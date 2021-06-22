@@ -1,16 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
-import javax.swing.Timer;
-import java.util.concurrent.TimeUnit;
 
 public class View extends JFrame{
 	private int screenWidth;
 	private int screenHeight;
-	private JPanel mainPanel, selectionPanel, playPanel;  
+	private JPanel mainPanel, selectionPanel, playPanel;
+	private JPanel winPanel, losePanel;
 
 	public View(int width, int height, String title, Handler _handler, Game _game)
 	{
@@ -18,7 +15,7 @@ public class View extends JFrame{
 		screenWidth = width;
 		screenHeight = height;
 
-		init(_game, _handler);
+		initPanel(_game, _handler);
 
 		setSize(width, height);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,14 +24,29 @@ public class View extends JFrame{
 	}
 	public void setKeyListener(Controller controller)
 	{
-		mainPanel.addKeyListener(controller);
 		playPanel.addKeyListener(controller);
-		selectionPanel.addKeyListener(controller);
 	}
 
 	public void render()
 	{
 		((PlayPanel)playPanel).render();
+	}
+	public void renderEndGame(int state)
+	{
+		if(state==1)
+		{
+			setContentPane(winPanel);
+			winPanel.requestFocus();
+			setVisible(true);
+			((PlayPanel)winPanel).render();
+		}
+		else
+		{
+			setContentPane(losePanel);
+			losePanel.requestFocus();
+			setVisible(true);
+			((PlayPanel)losePanel).render();
+		}
 	}
 
 	public void renderMain()
@@ -56,7 +68,7 @@ public class View extends JFrame{
 		setVisible(true);
 	}
 
-	private void init(Game game, Handler handler)
+	private void initPanel(Game game, Handler handler)
 	{
 		// main panel
 		mainPanel = new JPanel();
@@ -106,6 +118,7 @@ public class View extends JFrame{
 	        }
 	    });
 	    selectionPanel.add(btn5);
+
 	    JButton btn6 = new JButton("main");
     	btn6.addActionListener(new ActionListener() {
 	        @Override
@@ -116,76 +129,11 @@ public class View extends JFrame{
 	    selectionPanel.add(btn6);
 
 	    // player panel
-	    playPanel = new PlayPanel(handler,screenWidth,screenHeight); 
-	    playPanel.setFocusable(true);
-	}
-}
+	    playPanel = new PlayPanel(handler,screenWidth,screenHeight, 0);
+	    winPanel = new PlayPanel(handler,screenWidth,screenHeight, 1);
+	    losePanel = new PlayPanel(handler,screenWidth,screenHeight, 2);
 
-
-class PlayPanel extends JPanel
-{
-	private int screenWidth;
-	private int screenHeight;
-	private Handler handler;
-	private Toolkit toolkit =Toolkit.getDefaultToolkit();
-
-	public PlayPanel(Handler _handler, int width, int height)
-	{
-		handler = _handler;
-		screenWidth = width;
-		screenHeight = height;
-	}
-
-	public void render()
-	{
-		repaint();
-	}
-
-	@Override
-	public void paint(Graphics g)
-	{
-		// draw background
-		g.setColor(Color.white);
-		g.fillRect(0, 0, screenWidth, screenHeight);
-
-		// draw gameObject
-		g.setColor(Color.black);
-		for(int i=0; i<handler.boards.size(); i++)
-		{
-			GameObject tmpObj = handler.boards.get(i);
-			if(tmpObj.getZ()<0) continue;
-			g.fillRect(tmpObj.getX(),tmpObj.getY(),tmpObj.getWidth(),tmpObj.getHeight());
-		}
-		for(int i=0; i<handler.walls.size(); i++)
-		{
-			GameObject tmpObj = handler.walls.get(i);
-			if(tmpObj.getZ()<0) continue;
-			g.fillRect(tmpObj.getX(),tmpObj.getY(),tmpObj.getWidth(),tmpObj.getHeight());
-		}
-		g.setColor(Color.red);
-		for(int i=0; i<handler.grounds.size(); i++)
-		{
-			GameObject tmpObj = handler.grounds.get(i);
-			if(tmpObj.getZ()<0) continue;
-			g.fillRect(tmpObj.getX(),tmpObj.getY(),tmpObj.getWidth(),tmpObj.getHeight());
-		}
-		for(int i=0; i<handler.balls.size(); i++)
-		{
-			GameObject tmpObj = handler.balls.get(i);
-			if(tmpObj.getZ()<0) continue;
-			g.fillRect(tmpObj.getX(),tmpObj.getY(),tmpObj.getWidth(),tmpObj.getHeight());
-		}
-
-		for(int i=0; i<handler.bricks.size(); i++)
-		{
-			GameObject tmpObj = handler.bricks.get(i);
-			if(tmpObj.getZ()<0) continue;
-			Image a =toolkit.getImage( ((Brick)tmpObj).imagePath() );  
-			g.drawImage(a, tmpObj.getX(),tmpObj.getY(), tmpObj.getWidth(),tmpObj.getHeight(),this);
-		}
-
-		// draw UI
-		
 	}
 
 }
+

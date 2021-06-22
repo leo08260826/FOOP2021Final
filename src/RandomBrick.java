@@ -11,7 +11,7 @@ public class RandomBrick extends Brick  {
     @Override
     public void collided(GameObject other)
     {
-    	System.out.println("touch RandomBrick");
+    	// System.out.println("touch RandomBrick");
         this.setIsDead(true);
         if(other instanceof Ball){
             // [0,6] and -3 = [-3,3]

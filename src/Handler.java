@@ -8,13 +8,9 @@ public class Handler{
 	public List<GameObject> grounds = new ArrayList<GameObject>();
 
 	private int currentStage;
-	private int theSameZ;
-	private int life;
-
-	public Handler() {
-		currentStage = 1;
-		theSameZ = 10;
-	}
+	private int theSameZ = 10;
+	private int lifeNumber = 3;
+	private int lifeNow;
 
 	private void tickAndCheckForRemove(List<GameObject> list) {
 		Stack<Integer> indicesToBeDeleted = new Stack<>();
@@ -111,11 +107,11 @@ public class Handler{
 		return balls.size() == 0;
 	}
 	public boolean lose() {
-		return balls.size() == 0 && life<=0;
+		return balls.size() == 0 && lifeNow<=0;
 	}
 
 	public void arrange(int currentStage) {
-		life = 2;
+		lifeNow = lifeNumber;
 		this.currentStage = currentStage;
 
 		balls.clear();
@@ -136,6 +132,7 @@ public class Handler{
 		BrickArranger.arrange(currentStage, bricks, theSameZ);
 	}
 	public Board newBall() {
+		lifeNow--;
 		boards.clear();
 		balls.clear();
 		Board board = new Board("board", 305, 430, theSameZ, 60, 10, "");
@@ -144,7 +141,4 @@ public class Handler{
 
 		return board;
 	}
-
-	public int getLife(){return life;}
-	public void setLife(int i){life=i;}
 }

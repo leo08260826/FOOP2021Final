@@ -9,6 +9,8 @@ public class Model{
 	private Boolean running = false;
 	private int refreshRate;
 	private int gameState; // 0:playing, 1:win, 2:lose
+	private int gameStage; // level
+	private int endGameMessageDuration = 3;
 
 	// GameObjs
 	private Board board;
@@ -25,11 +27,12 @@ public class Model{
 
 	public void init(int stage)
 	{
+		gameStage = stage;
 		handler.arrange(stage);
 		board = handler.newBall();
 	}
 
-	public void	 startLoop()
+	public int	startLoop()
 	{
 		// game loop
 		// ref: https://www.youtube.com/watch?v=1gir2R7G9ws
@@ -53,7 +56,15 @@ public class Model{
 			try{TimeUnit.MILLISECONDS.sleep(refreshRate);}
 			catch(InterruptedException e){}
 		}
-		//TODO: win/lose animation by using gameState
+		
+		if(gameState!=0)
+		{
+			renderEndGame();
+			try{TimeUnit.SECONDS.sleep(endGameMessageDuration);}
+			catch(InterruptedException e){}
+		}
+
+		return gameState;
 	}
 
 	public void stopLoop()
@@ -64,6 +75,11 @@ public class Model{
 	private void render()
 	{
 		view.render();
+	}
+
+	private void renderEndGame()
+	{
+		view.renderEndGame(gameState);
 	}
 
 	private void tick()
@@ -99,7 +115,6 @@ public class Model{
 			}
 			else if(handler.noBall())
 			{
-				handler.setLife(handler.getLife()-1);
 				board = handler.newBall();
 			}
 
@@ -109,5 +124,7 @@ public class Model{
 	{
 		board.move(direction, isPress);
 	}
+
+	public int getGameStage(){return gameStage;}
 
 }

@@ -6,7 +6,7 @@ public class HardBrick extends Brick  {
     private int life = 2;
     public void collided(GameObject other, int collisionType)
     {
-    	System.out.println("touch HardBrick");
+    	// System.out.println("touch HardBrick");
         if(life > 1){
             life--;
         }else{

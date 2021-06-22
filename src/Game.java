@@ -4,8 +4,6 @@ public class Game {
 	private Model model;
 	private Controller controller;
 
-	private int state=0; //0: main scene, 1: stage selection, 2: in-game scene
-
 	public Game(int width, int height, String title, int fps)
 	{
 		handler = new Handler();
@@ -13,37 +11,31 @@ public class Game {
 		model = new Model(view, handler, fps);
 		controller = new Controller(model);
 		view.setKeyListener(controller);
-		// view.addKeyListener(controller);
 	}
 
 	public void main()
 	{
-		System.out.println("main");
+		System.out.println("Main scene.");
 		view.renderMain();
 	}
 
 	public void stageSelection()
 	{
-		System.out.println("stage selection");
+		System.out.println("Stage selection scene.");
 		view.renderStageSelection();
 	}
 
 	public void play(int stage)
 	{
-		System.out.println("playing " + stage + " stage.");
+		System.out.println("Play scene: playing " + stage + " stage.");
 		view.renderPlay();
 		model.init(stage);
-		// model.startLoop();
-		Thread loop = new Thread(model::startLoop);
-		loop.start();
-		// try {
-  //         loop.join();
-  //       } catch (InterruptedException e) {
-  //         e.printStackTrace();
-  //       }
+		// anthor thread for game loop
+		(new GameThread(model, this)).start();
 	}
 	public void exit()
 	{
+		System.out.println("Exit game.");
 		System.exit(0);
 	}
 }
