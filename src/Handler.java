@@ -10,13 +10,22 @@ public class Handler{
 	private int theSameZ;
 	private int life;
 
+	private int boardLeftLimit, boardRightLimit;
+
 	public Handler() {
 		theSameZ = 10;
 
-		addObj(new Wall("wallL", 10, 10, 10, 5, 480, ""));
-		addObj(new Wall("wallR", 470, 10, 10, 5, 480, ""));
-		addObj(new Wall("wallT", 10, 10, 10, 460, 5, ""));
-		addObj(new Ground("ground", 10, 470, 10, 600, 5, ""));
+		int leftWallX = 10;
+		int rightWallX = 470;
+		int thickness = 5;
+
+		addObj(new Wall("wallL", leftWallX, 10, 10, thickness, 480, ""));
+		addObj(new Wall("wallR", rightWallX, 10, 10, thickness, 480, ""));
+		addObj(new Wall("wallT", 10, 10, 10, 460, thickness, ""));
+		addObj(new Ground("ground", 10, 470, 10, 600, thickness, ""));
+
+		boardLeftLimit = leftWallX + thickness;
+		boardRightLimit = rightWallX;
 	}
 
 	private void tickAndCheckForRemove(List<GameObject> list) {
@@ -131,7 +140,7 @@ public class Handler{
 	public Board newBall() {
 		boards.clear();
 		balls.clear();
-		Board board = new Board("board", 305, 430, theSameZ, 60, 10, "");
+		Board board = new Board("board", 305, 430, theSameZ, 60, 10, "", boardLeftLimit, boardRightLimit);
 		boards.add(board);
 		balls.add(new Ball("ball", 328, 420, theSameZ, 10, 10, "", 0, -1));
 
