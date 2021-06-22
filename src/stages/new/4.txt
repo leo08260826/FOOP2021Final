@@ -1,0 +1,31 @@
+BasicBrick 220 20
+
+BasicBrick 170 50
+HardBrick 220 50
+BasicBrick 270 50
+
+BasicBrick 120 80
+HardBrick 170 80
+RandomBrick 220 80
+HardBrick 270 80
+BasicBrick 320 80
+
+BasicBrick 70 110
+HardBrick 120 110
+RandomBrick 170 110
+BlockBrick 220 110
+RandomBrick 270 110
+HardBrick 320 110
+BasicBrick 370 110
+
+BasicBrick 120 140
+HardBrick 170 140
+RandomBrick 220 140
+HardBrick 270 140
+BasicBrick 320 140
+
+BasicBrick 170 170
+HardBrick 220 170
+BasicBrick 270 170
+
+BasicBrick 220 200
