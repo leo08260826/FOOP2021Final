@@ -7,13 +7,15 @@ class PlayPanel extends JPanel
 	private Handler handler;
 	private Toolkit toolkit = Toolkit.getDefaultToolkit();
 	private Image resultImage;
+	private Image image = toolkit.getImage("./src/images/bg001.png");
 
-	public PlayPanel(Handler _handler, int width, int height, int state)
+	public PlayPanel(Handler _handler, int width, int height, int state, Image image)
 	{
 		handler = _handler;
 		screenWidth = width;
 		screenHeight = height;
 		setFocusable(true);
+		this.image = image.getScaledInstance(width, height, Image.SCALE_DEFAULT);
 		
 		if(state==0)
 		{
@@ -39,8 +41,9 @@ class PlayPanel extends JPanel
 	public void paint(Graphics g)
 	{
 		// draw background
-		g.setColor(Color.white);
-		g.fillRect(0, 0, screenWidth, screenHeight);
+		g.drawImage(image, 0, 0, this);
+		// g.setColor(Color.white);
+		// g.fillRect(0, 0, screenWidth, screenHeight);
 
 		// draw gameObject
 		g.setColor(Color.black);
