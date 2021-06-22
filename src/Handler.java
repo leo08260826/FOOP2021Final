@@ -7,12 +7,10 @@ public class Handler{
 	public List<GameObject> walls = new ArrayList<GameObject>();
 	public List<GameObject> grounds = new ArrayList<GameObject>();
 
-	private int currentStage;
 	private int theSameZ;
 	private int life;
 
 	public Handler() {
-		currentStage = 1;
 		theSameZ = 10;
 	}
 
@@ -111,12 +109,11 @@ public class Handler{
 		return balls.size() == 0;
 	}
 	public boolean lose() {
-		return balls.size() == 0 && life<=0;
+		return balls.size() == 0 && life <= 0;
 	}
 
 	public void arrange(int currentStage) {
 		life = 2;
-		this.currentStage = currentStage;
 
 		balls.clear();
 		bricks.clear();

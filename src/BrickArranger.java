@@ -20,18 +20,20 @@ public class BrickArranger {
         while (in.hasNextLine()) {
             line = in.nextLine().trim().split(" ");
             if (line.length == 1 && line[0].equals("")) continue;
-            String brickType = line[0];     // currently unused
+            String brickType = line[0];
+            int x = Integer.parseInt(line[1]);
+            int y = Integer.parseInt(line[2]);
             if( brickType.equals("BasicBrick") ){
-                bricks.add(new BasicBrick("BasicBrick", Integer.parseInt(line[1]), Integer.parseInt(line[2]), theSameZ, 30, 20, ""));
+                bricks.add(new BasicBrick(brickType, x, y, theSameZ, 50, 20, ""));
             }
             else if( brickType.equals("BlockBrick") ){
-                bricks.add(new BlockBrick("BlockBrick", Integer.parseInt(line[1]), Integer.parseInt(line[2]), theSameZ, 30, 20, ""));
+                bricks.add(new BlockBrick(brickType, x, y, theSameZ, 50, 20, ""));
             }
             else if( brickType.equals("HardBrick") ){
-                bricks.add(new HardBrick("HardBrick", Integer.parseInt(line[1]), Integer.parseInt(line[2]), theSameZ, 30, 20, ""));
+                bricks.add(new HardBrick(brickType, x, y, theSameZ, 50, 20, ""));
             }
             else if( brickType.equals("RandomBrick") ){
-                bricks.add(new RandomBrick("RandomBrick", Integer.parseInt(line[1]), Integer.parseInt(line[2]), theSameZ, 30, 20, ""));
+                bricks.add(new RandomBrick(brickType, x, y, theSameZ, 50, 20, ""));
             }
             
         }
