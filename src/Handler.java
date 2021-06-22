@@ -128,7 +128,7 @@ public class Handler{
 	}
 	public boolean lose()
 	{
-		return balls.size() == 0 && lifeNow<=0;
+		return balls.size() == 0 && lifeNow<=1;
 	}
 
 	public void arrange(int currentStage) {
@@ -144,7 +144,6 @@ public class Handler{
 		BrickArranger.arrange(currentStage, bricks, theSameZ);
 	}
 	public Board newBall() {
-		lifeNow--;
 		boards.clear();
 		balls.clear();
 		Board board = new Board("board", 210, 430, theSameZ, 60, 10, "", boardLeftLimit, boardRightLimit);
@@ -155,7 +154,7 @@ public class Handler{
 		return board;
 	}
 
-	public int getLife(){return life;}
-	public void setLife(int i){life=i;}
+	public int getLife(){return lifeNow;}
+	public void setLife(int i){lifeNow=i;}
 	public int getBallCount(){ return balls.size(); }
 }

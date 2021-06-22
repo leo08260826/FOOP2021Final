@@ -110,11 +110,13 @@ public class Model{
 			}
 			else if(handler.lose())
 			{
+				handler.setLife(handler.getLife()-1);
 				gameState=2;
 				stopLoop();		
 			}
 			else if(handler.noBall())
 			{
+				handler.setLife(handler.getLife()-1);
 				board = handler.newBall();
 			}
 

@@ -45,7 +45,7 @@ public class Board extends GameObject implements Collidable {
     public void collided(GameObject other)
     {
 		distance = 2*other.getX() + other.getWidth() - 2*this.getX() - this.getWidth();
-    	System.out.println("touch board");
+    	// System.out.println("touch board");
     }
 
 	public int getDirection(){return Math.abs(direction);}
