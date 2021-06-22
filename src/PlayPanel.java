@@ -23,7 +23,7 @@ class PlayPanel extends JPanel
 		}
 		else if(state==1)
 		{
-			resultImage = toolkit.getImage("./src/images/win.jpg");
+			resultImage = toolkit.getImage("./src/images/win.PNG");
 		}
 		else if(state==2)
 		{

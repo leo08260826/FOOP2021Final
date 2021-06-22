@@ -22,7 +22,6 @@ public class Model{
 		refreshRate = (int)(1/(double)fps*1000);
 		System.out.println("refreshRate: " + refreshRate);
 		collisionHandler = new CollisionHandler(_handler);
-		gameState = 0;
 	}
 
 	public void init(int stage)
@@ -34,6 +33,7 @@ public class Model{
 
 	public int	startLoop()
 	{
+		gameState = 0;
 		// game loop
 		// ref: https://www.youtube.com/watch?v=1gir2R7G9ws
 		running = true;

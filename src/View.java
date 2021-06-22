@@ -39,7 +39,7 @@ public class View extends JFrame {
 			setVisible(true);
 			((PlayPanel)winPanel).render();
 		}
-		else
+		else if(state==2)
 		{
 			setContentPane(losePanel);
 			losePanel.requestFocus();
