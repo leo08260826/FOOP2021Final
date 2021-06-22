@@ -149,4 +149,5 @@ public class Handler{
 
 	public int getLife(){return life;}
 	public void setLife(int i){life=i;}
+	public int getBallCount(){ return balls.size(); }
 }

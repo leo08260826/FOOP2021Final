@@ -185,7 +185,10 @@ class PlayPanel extends JPanel
 		}
 
 		// draw UI
-		
+		g.setColor(Color.BLACK);
+		g.setFont(new Font("Ariel", Font.BOLD, 20));
+		g.drawString("Life: " + handler.getLife(), 490, 30);
+		g.drawString("Balls: " + handler.getBallCount(), 490, 60);
 	}
 
 }
