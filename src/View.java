@@ -150,7 +150,7 @@ public class View extends JFrame {
 	    playPanel = new PlayPanel(handler,screenWidth,screenHeight, 0, img1);
 	    winPanel = new PlayPanel(handler,screenWidth,screenHeight, 1, img1);
 	    losePanel = new PlayPanel(handler,screenWidth,screenHeight, 2, img1);
+
 	}
 }
-
 

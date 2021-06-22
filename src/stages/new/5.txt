@@ -1,0 +1,53 @@
+RandomBrick 20 20
+RandomBrick 70 20
+RandomBrick 120 20
+RandomBrick 170 20
+RandomBrick 220 20
+RandomBrick 270 20
+RandomBrick 320 20
+RandomBrick 370 20
+
+RandomBrick 20 50
+RandomBrick 70 50
+RandomBrick 120 50
+RandomBrick 170 50
+RandomBrick 220 50
+RandomBrick 270 50
+RandomBrick 320 50
+RandomBrick 370 50
+
+RandomBrick 20 80
+RandomBrick 70 80
+RandomBrick 120 80
+RandomBrick 170 80
+RandomBrick 220 80
+RandomBrick 270 80
+RandomBrick 320 80
+RandomBrick 370 80
+
+RandomBrick 20 110
+RandomBrick 70 110
+RandomBrick 120 110
+RandomBrick 170 110
+RandomBrick 220 110
+RandomBrick 270 110
+RandomBrick 320 110
+RandomBrick 370 110
+
+RandomBrick 20 140
+RandomBrick 70 140
+RandomBrick 120 140
+RandomBrick 170 140
+RandomBrick 220 140
+RandomBrick 270 140
+RandomBrick 320 140
+RandomBrick 370 140
+
+BlockBrick 20 170
+BlockBrick 70 170
+BlockBrick 120 170
+BlockBrick 170 170
+BlockBrick 220 170
+BlockBrick 270 170
+BlockBrick 320 170
+BlockBrick 370 170

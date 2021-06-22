@@ -7,10 +7,30 @@ public class Handler{
 	public List<GameObject> walls = new ArrayList<GameObject>();
 	public List<GameObject> grounds = new ArrayList<GameObject>();
 
+
 	private int currentStage;
 	private int theSameZ = 10;
 	private int lifeNumber = 3;
 	private int lifeNow;
+	private int boardLeftLimit, boardRightLimit;
+
+	public Handler() {
+		// current playground:
+		//     left limit:  x = 10
+		//     right limit: x = 470	  (the center of the board/ball should be at x = 240)
+		//     top limit:   y = 10
+		int leftWallX = 5;
+		int rightWallX = 470;
+		int thickness = 5;
+
+		addObj(new Wall("wallL", leftWallX, 5, 10, thickness, 480, ""));
+		addObj(new Wall("wallR", rightWallX, 5, 10, thickness, 480, ""));
+		addObj(new Wall("wallT", 10, 5, 10, 460, thickness, ""));
+		addObj(new Ground("ground", 10, 470, 10, 600, thickness, ""));
+
+		boardLeftLimit = leftWallX + thickness;
+		boardRightLimit = rightWallX;
+	}
 
 	private void tickAndCheckForRemove(List<GameObject> list) {
 		Stack<Integer> indicesToBeDeleted = new Stack<>();
@@ -106,7 +126,8 @@ public class Handler{
 	{
 		return balls.size() == 0;
 	}
-	public boolean lose() {
+	public boolean lose()
+	{
 		return balls.size() == 0 && lifeNow<=0;
 	}
 
@@ -117,17 +138,8 @@ public class Handler{
 		balls.clear();
 		bricks.clear();
 		boards.clear();
-		walls.clear();
-		grounds.clear();
-
-		Wall wall1 = new Wall("wallL", 50, 50, 10, 5, 400, "");
-		addObj(wall1);
-		Wall wall2 = new Wall("wallR", 620, 50, 10, 5, 400, "");
-		addObj(wall2);
-		Wall wall3 = new Wall("wallT", 50, 50, 10, 600, 5, "");
-		addObj(wall3);
-		Ground ground = new Ground("ground", 50, 470, 10, 600, 5, "");
-		addObj(ground);
+		//walls.clear();
+		//grounds.clear();
 
 		BrickArranger.arrange(currentStage, bricks, theSameZ);
 	}
@@ -135,10 +147,15 @@ public class Handler{
 		lifeNow--;
 		boards.clear();
 		balls.clear();
-		Board board = new Board("board", 305, 430, theSameZ, 160, 10, "");
+		Board board = new Board("board", 210, 430, theSameZ, 60, 10, "", boardLeftLimit, boardRightLimit);
 		boards.add(board);
 		int vx = (int)(Math.random()*4 - 2);
-		balls.add(new Ball("ball", 328, 420, theSameZ, 10, 10, "", vx, -3));
+		balls.add(new Ball("ball", 235, 420, theSameZ, 10, 10, "", vx, -3));
+
 		return board;
 	}
+
+	public int getLife(){return life;}
+	public void setLife(int i){life=i;}
+	public int getBallCount(){ return balls.size(); }
 }

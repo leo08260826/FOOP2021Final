@@ -4,7 +4,9 @@ public class HardBrick extends Brick  {
         super(_name, _x, _y, _z, _width, _height, _tag);
     }
     private int life = 2;
-    public void collided(GameObject other, int collisionType)
+
+    @Override
+    public void collided(GameObject other)
     {
     	// System.out.println("touch HardBrick");
         if(life > 1){
