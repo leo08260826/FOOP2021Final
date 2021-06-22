@@ -106,7 +106,8 @@ public class View extends JFrame{
 	        }
 	    });
 	    selectionPanel.add(btn5);
-		JButton btn__ = new JButton("Level 4");
+
+	    JButton btn__ = new JButton("Level 4");
 		btn__.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -114,6 +115,16 @@ public class View extends JFrame{
 			}
 		});
 		selectionPanel.add(btn__);
+
+		JButton btn___ = new JButton("Level 5");
+		btn___.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				game.play(5);
+			}
+		});
+		selectionPanel.add(btn___);
+
 	    JButton btn6 = new JButton("main");
     	btn6.addActionListener(new ActionListener() {
 	        @Override
