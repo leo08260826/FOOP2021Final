@@ -22,29 +22,25 @@ public class View extends JFrame {
 		setLocationRelativeTo(null);
 	}
 
-	public void setKeyListener(Controller controller)
-	{
+	public void setKeyListener(Controller controller) {
 		playPanel.addKeyListener(controller);
 	}
 
 	public void render() {
 		((PlayPanel) playPanel).render();
 	}
-	public void renderEndGame(int state)
-	{
-		if(state==1)
-		{
+
+	public void renderEndGame(int state) {
+		if (state == 1) {
 			setContentPane(winPanel);
 			winPanel.requestFocus();
 			setVisible(true);
-			((PlayPanel)winPanel).render();
-		}
-		else if(state==2)
-		{
+			((PlayPanel) winPanel).render();
+		} else if (state == 2) {
 			setContentPane(losePanel);
 			losePanel.requestFocus();
 			setVisible(true);
-			((PlayPanel)losePanel).render();
+			((PlayPanel) losePanel).render();
 		}
 	}
 
@@ -69,88 +65,110 @@ public class View extends JFrame {
 	private void setButtonLocation(JButton btn, int x, int y) {
 		Dimension size = btn.getPreferredSize();
 		btn.setBounds(0, 0, size.width, size.height);
+		// btn.setBounds(0, 0, 100, 50);
+
 		btn.setLayout(null);
 		btn.setLocation(x, y);
 	}
 
-	private void initPanel(Game game, Handler handler)
-	{
+	private void initPanel(Game game, Handler handler) {
 		// main panel
 		// https://opengameart.org/content/background-12
 		Image img = Toolkit.getDefaultToolkit().createImage("./src/images/bg001.png");
 		mainPanel = new MyJPanel(img, screenWidth, screenHeight);
 		mainPanel.setFocusable(true);
+		mainPanel.setLayout(null);
 
-		JButton btn1 = new JButton("Start Game");
-		btn1.addActionListener(new ActionListener() {
+		JButton btnStart = new JButton("Start Game");
+		// btnStart.setSize(30, 300);
+		btnStart.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.stageSelection();
 			}
 		});
-		mainPanel.setLayout(null);
-		setButtonLocation(btn1, screenWidth / 2 - 100, screenHeight / 2 - 50);
-		mainPanel.add(btn1);
+		setButtonLocation(btnStart, screenWidth / 2 - 100, screenHeight / 2 - 50);
+		mainPanel.add(btnStart);
 
-		JButton btn2 = new JButton("Exit");
-		btn2.addActionListener(new ActionListener() {
+		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.exit();
 			}
 		});
-		setButtonLocation(btn2, screenWidth / 2, screenHeight / 2 - 50);
-		mainPanel.add(btn2);
+		setButtonLocation(btnExit, screenWidth / 2, screenHeight / 2 - 50);
+		mainPanel.add(btnExit);
 
 		// selection panel
 		selectionPanel = new MyJPanel(img, screenWidth, screenHeight);
 		selectionPanel.setFocusable(true);
 		selectionPanel.setLayout(null);
 
-		JButton btn3 = new JButton("Level 1");
-		btn3.addActionListener(new ActionListener() {
+		JButton btn1 = new JButton("Level 1");
+		btn1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.play(1);
 			}
 		});
-		setButtonLocation(btn3, screenWidth / 2 - 140, screenHeight / 2 - 50);
-		selectionPanel.add(btn3);
-		JButton btn4 = new JButton("Level 2");
-		btn4.addActionListener(new ActionListener() {
+		setButtonLocation(btn1, screenWidth / 2 - 140, screenHeight / 2 - 50);
+		selectionPanel.add(btn1);
+		JButton btn2 = new JButton("Level 2");
+		btn2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.play(2);
 			}
 		});
-		setButtonLocation(btn4, screenWidth / 2 - 40, screenHeight / 2 - 50);
-		selectionPanel.add(btn4);
-		JButton btn5 = new JButton("Level 3");
-		btn5.addActionListener(new ActionListener() {
+		setButtonLocation(btn2, screenWidth / 2 - 40, screenHeight / 2 - 50);
+		selectionPanel.add(btn2);
+		JButton btn3 = new JButton("Level 3");
+		btn3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.play(3);
 			}
 		});
-		setButtonLocation(btn5, screenWidth / 2 + 60, screenHeight / 2 - 50);
+		setButtonLocation(btn3, screenWidth / 2 + 60, screenHeight / 2 - 50);
+		selectionPanel.add(btn3);
+
+		JButton btn4 = new JButton("Level 4");
+		btn4.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				game.play(4);
+			}
+		});
+		setButtonLocation(btn4, screenWidth / 2 - 140, screenHeight / 2 - 10);
+		selectionPanel.add(btn4);
+
+		JButton btn5 = new JButton("Level 5");
+		btn5.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				game.play(5);
+			}
+		});
+		setButtonLocation(btn5, screenWidth / 2 - 40, screenHeight / 2 - 10);
 		selectionPanel.add(btn5);
-		JButton btn6 = new JButton("main");
-		btn6.addActionListener(new ActionListener() {
+
+		JButton btnMain = new JButton("main");
+		btnMain.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.main();
 			}
 		});
-		setButtonLocation(btn6, screenWidth / 2 - 35, screenHeight / 2 - 100);
-		selectionPanel.add(btn6);
+		setButtonLocation(btnMain, screenWidth / 2 - 35, screenHeight / 2 - 100);
+		selectionPanel.add(btnMain);
 
 		// player panel
 		// https://opengameart.org/content/large-nature-background
 		Image img1 = Toolkit.getDefaultToolkit().createImage("./src/images/background.png");
-	    playPanel = new PlayPanel(handler,screenWidth,screenHeight, 0, img1);
-	    winPanel = new PlayPanel(handler,screenWidth,screenHeight, 1, img1);
-	    losePanel = new PlayPanel(handler,screenWidth,screenHeight, 2, img1);
+		playPanel = new PlayPanel(handler, screenWidth, screenHeight, 0, img1);
+		winPanel = new PlayPanel(handler, screenWidth, screenHeight, 1, img1);
+		losePanel = new PlayPanel(handler, screenWidth, screenHeight, 2, img1);
 
 	}
 }
-
