@@ -18,10 +18,10 @@ public class RandomBrick extends Brick  {
             ((Ball)other).setVx(getRandom());
             int vy_ = getRandom();
             // assert vy_ != 0
-            while(vy_ == 0){
-                vy_ = getRandom();
-            }
-            ((Ball)other).setVy(vy_);
+            // while( Math.abs(vy_) <= 1){
+            //     vy_ = getRandom();
+            // }
+            // ((Ball)other).setVy(vy_);
         }
     }
 
