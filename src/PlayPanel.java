@@ -87,6 +87,21 @@ class PlayPanel extends JPanel
 		g.drawString("Life: " + handler.getLife(), 490, 30);
 		g.drawString("Balls: " + handler.getBallCount(), 490, 60);
 
+		// UI - instructions
+		g.setFont(new Font("Ariel", Font.PLAIN, 12));
+		g.drawString("Instructions:", 485, 170);
+		g.drawString("- Press   ,   to move the", 490, 190);
+		g.drawString("   board.", 489, 205);
+
+		g.drawString("- Press       to return to", 490, 220);
+		g.drawString("   main page.", 489, 233);
+
+		g.setFont(new Font("Ariel", Font.BOLD, 12));
+		g.drawString("A", 535, 190);
+		g.drawString("D", 548, 190);
+
+		g.drawString("esc", 535, 220);
+
 		// draw End Game
 		g.drawImage(resultImage, 320-150, 240-100, 300, 200, this);
 		
