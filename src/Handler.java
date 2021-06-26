@@ -7,7 +7,6 @@ public class Handler{
 	public List<GameObject> walls = new ArrayList<GameObject>();
 	public List<GameObject> grounds = new ArrayList<GameObject>();
 
-
 	private int currentStage;
 	private int theSameZ = 10;
 	private int lifeNumber = 3;
@@ -45,7 +44,6 @@ public class Handler{
 			list.remove(indicesToBeDeleted.pop());
 		}
 	}
-
 	public void tick() {
 		tickAndCheckForRemove(balls);
 		tickAndCheckForRemove(bricks);
@@ -55,17 +53,14 @@ public class Handler{
 	}
 
 	private void addObjHelper(GameObject obj, List<GameObject> objs) {
-		for(int i=0; i<objs.size(); i++)
-		{
-			if(objs.get(i).getZ()>obj.getZ())
-			{
+		for(int i = 0; i < objs.size(); i++) {
+			if(objs.get(i).getZ() > obj.getZ()) {
 				objs.add(i, obj);
 				return;
 			}
 		}
 		objs.add(obj);
 	}
-
 	public void addObj(GameObject obj) {
 		if (obj instanceof Ball) addObjHelper(obj, balls);
 		else if (obj instanceof Board) addObjHelper(obj, boards);
@@ -75,46 +70,7 @@ public class Handler{
 		else System.out.println("Invalid object type.");
 	}
 
-	private void removeObjHelper(GameObject obj, List<GameObject> objs) {
-		for(int i=0; i<objs.size(); i++)
-		{
-			if(objs.get(i).equals(obj))
-			{
-				objs.remove(i);
-				System.out.println("Remove!");
-				return;
-			}
-		}
-		System.out.println("Didn't remove anything!");
-	}
-
-	// TODO: check whether this is needed
-	public void removeObj(GameObject obj) {
-		if (obj instanceof Ball) {
-			removeObjHelper(obj, balls);
-			return;
-		}
-		else if (obj instanceof Board) {
-			removeObjHelper(obj, boards);
-			return;
-		}
-		else if (obj instanceof Brick) {
-			removeObjHelper(obj, bricks);
-			return;
-		}
-		else if (obj instanceof Wall) {
-			removeObjHelper(obj, walls);
-			return;
-		}
-		else if (obj instanceof Ground) {
-			removeObjHelper(obj, grounds);
-			return;
-		}
-		else System.out.println("Invalid object type.");
-	}
-
 	public boolean win() {
-		// DONE: change logic due to new brick type BlockBrick
 		for (GameObject brick: bricks) {
 			if (!(brick instanceof BlockBrick)) {
 				return false;
@@ -122,13 +78,11 @@ public class Handler{
 		}
 		return true;
 	}
-	public boolean noBall()
-	{
+	public boolean noBall() {
 		return balls.size() == 0;
 	}
-	public boolean lose()
-	{
-		return balls.size() == 0 && lifeNow<=1;
+	public boolean lose() {
+		return balls.size() == 0 && lifeNow <= 1;
 	}
 
 	public void arrange(int currentStage) {
@@ -154,7 +108,7 @@ public class Handler{
 		return board;
 	}
 
-	public int getLife(){return lifeNow;}
-	public void setLife(int i){lifeNow=i;}
-	public int getBallCount(){ return balls.size(); }
+	public int getLife() { return lifeNow; }
+	public void setLife(int i) { lifeNow = i; }
+	public int getBallCount() { return balls.size(); }
 }
