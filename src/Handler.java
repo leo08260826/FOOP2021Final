@@ -15,16 +15,16 @@ public class Handler{
 
 	public Handler() {
 		// current playground:
-		//     left limit:  x = 10
-		//     right limit: x = 470	  (the center of the board/ball should be at x = 240)
-		//     top limit:   y = 10
+		//     left limit:  x = 15
+		//     right limit: x = 465	  (the center of the board/ball should be at x = 240)
+		//     top limit:   y = 15
 		int leftWallX = 5;
-		int rightWallX = 470;
-		int thickness = 5;
+		int rightWallX = 465;
+		int thickness = 10;
 
 		addObj(new Wall("wallL", leftWallX, 5, 10, thickness, 480, ""));
 		addObj(new Wall("wallR", rightWallX, 5, 10, thickness, 480, ""));
-		addObj(new Wall("wallT", 10, 5, 10, 460, thickness, ""));
+		addObj(new Wall("wallT", 5, 5, 10, 470, thickness, ""));
 		addObj(new Ground("ground", 10, 470, 10, 600, thickness, ""));
 
 		boardLeftLimit = leftWallX + thickness;
