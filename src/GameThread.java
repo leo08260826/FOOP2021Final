@@ -3,7 +3,7 @@ class GameThread extends Thread
 	private Model model;
 	private Game game;
 
-	private int gameStateTotal=3;
+	private int gameStateTotal=5;
 	
 	public GameThread(Model _model, Game _game)
 	{

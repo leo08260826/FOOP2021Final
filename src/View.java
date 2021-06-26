@@ -8,6 +8,8 @@ public class View extends JFrame {
 	private int screenHeight;
 	private JPanel mainPanel, selectionPanel, playPanel;
 	private JPanel winPanel, losePanel;
+	private static final int btnWidth = 80;
+	private static final int btnHeight = 28;
 
 	public View(int width, int height, String title, Handler _handler, Game _game) {
 		super(title);
@@ -64,8 +66,8 @@ public class View extends JFrame {
 
 	private void setButtonLocation(JButton btn, int x, int y) {
 		Dimension size = btn.getPreferredSize();
-		btn.setBounds(0, 0, size.width, size.height);
-		// btn.setBounds(0, 0, 100, 50);
+		// btn.setBounds(0, 0, size.width, size.height);
+		btn.setBounds(0, 0, btnWidth, btnHeight);
 
 		btn.setLayout(null);
 		btn.setLocation(x, y);
@@ -79,7 +81,7 @@ public class View extends JFrame {
 		mainPanel.setFocusable(true);
 		mainPanel.setLayout(null);
 
-		JButton btnStart = new JButton("Start Game");
+		JButton btnStart = new JButton("Start");
 		// btnStart.setSize(30, 300);
 		btnStart.addActionListener(new ActionListener() {
 			@Override
@@ -160,7 +162,7 @@ public class View extends JFrame {
 				game.main();
 			}
 		});
-		setButtonLocation(btnMain, screenWidth / 2 - 35, screenHeight / 2 - 100);
+		setButtonLocation(btnMain, screenWidth / 2 - btnWidth/2, screenHeight / 2 - 100);
 		selectionPanel.add(btnMain);
 
 		// player panel
