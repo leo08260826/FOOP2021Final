@@ -11,6 +11,8 @@ public class Board extends GameObject implements Collidable {
 	private int direction = 1;
     private int leftLimit;
     private int rightLimit;
+	private int lastx = 210;
+	private int cnt = 0;
 
 	public Board(String _name, int _x, int _y, int _z, int _width, int _height, String _tag, int lLim, int rLim)
 	{
@@ -40,11 +42,21 @@ public class Board extends GameObject implements Collidable {
 		// }
 		if(aIsPressed && !dIsPressed) x = Math.max(x - boardSpeed, leftLimit);
 		if(!aIsPressed && dIsPressed) x = Math.min(x + boardSpeed, rightLimit - width);
+		if(cnt == 10){
+			lastx = x;
+			cnt = 0;
+		}
+		cnt++;
 	}
 
     public void collided(GameObject other)
     {
-		distance = 2*other.getX() + other.getWidth() - 2*this.getX() - this.getWidth();
+		if(lastx == x){
+			distance = 0;
+		}
+		else{
+			distance = 2*other.getX() + other.getWidth() - 2*this.getX() - this.getWidth();
+		}
     	// System.out.println("touch board");
     }
 

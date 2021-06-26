@@ -21,7 +21,7 @@ public class Handler{
 		//     top limit:   y = 10
 		int leftWallX = 5;
 		int rightWallX = 470;
-		int thickness = 5;
+		int thickness = 10;
 
 		addObj(new Wall("wallL", leftWallX, 5, 10, thickness, 480, ""));
 		addObj(new Wall("wallR", rightWallX, 5, 10, thickness, 480, ""));

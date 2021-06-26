@@ -12,11 +12,11 @@ public class Ball extends GameObject implements Collider{
 	}
 
 	private void collidesVertical(){
-		vy = -vy;
+		this.setVy(-vy);
 		this.setY(this.getY() + vy);
 	}
 	private void collidesHorizontal(){
-		vx = -vx;
+		this.setVx(-vx);
 		this.setX(this.getX() + vx);
 	}
 
